@@ -1,0 +1,96 @@
+baseURL = "https://electricgerbil.art/"
+languageCode = "en-US"
+title = "Electric Gerbil Arts"
+# Enable comments by entering your Disqus shortname
+disqusShortname = ""
+# Enable Google Analytics by entering your tracking code
+googleAnalytics = "G-550TQB4CNE"
+enableRobotsTXT = true
+disableFastRender = true
+
+theme = "hugo-sustain"
+
+[permalinks]
+  post = "/:year/:month/:day/:slug"
+
+[params]
+  avatar = "/images/electric-gerbil-logo.webp"
+  author = "Electric Gerbil Arts"
+  description = "A simple homepage"
+
+  # Custom assets can be linked with their paths relative to static/
+  custom_css = ["css/electric-gerbil.css", "css/carousel.css"]
+  custom_js  = ["js/carousel.js"]
+
+  # flip this for localhost debugging
+  httpsOnly  = true
+
+# [params.social]
+#   Github        = "jimcortez"
+#   Email         = ""
+#   Twitter       = ""
+#   LinkedIn      = "jimcortez"
+#   Stackoverflow = "u/695527"
+#   Medium        = ""
+#   Telegram      = ""
+#   RSS           = ""
+
+# ## Main Menu
+# [[menu.main]]
+#   name = "blog"
+#   weight = 100
+#   identifier = "blog"
+#   url = "/blog/"
+[[menu.main]]
+  name = "art"
+  identifier = "art"
+  weight = 200
+  url = "/art/"
+# [[menu.main]]
+#   name = "resume"
+#   identifier = "resume"
+#   weight = 300
+#   url = "/resume/"
+
+[params.csp]
+  childsrc = ["'self'"]
+  fontsrc = ["'self'",
+             "https://maxcdn.bootstrapcdn.com",
+             "https://fonts.gstatic.com",
+             "data:"]
+  formaction = ["'self'"]
+  framesrc = ["'self'",
+              "youtube.com",
+              "www.youtube.com"]
+  imgsrc = ["'self'",
+            "data:",
+            "https://www.gravatar.com",
+            "https://ssl.gstatic.com",
+            "https://www.gstatic.com",
+            "https://www.google-analytics.com"]
+
+  objectsrc = ["'none'"]
+  connectsrc = ["'self'", "https://www.google-analytics.com"]
+  stylesrc = ["'self'",
+              "'unsafe-inline'",
+              "https://maxcdn.bootstrapcdn.com",
+              "https://fonts.googleapis.com",
+              "https://cdn.jsdelivr.net",
+              "https://tagmanager.google.com",
+              "https://fonts.googleapis.com"]
+  scriptsrc = ["'self'",
+		       "'unsafe-inline'",
+		       "'unsafe-eval'",
+		       "https://cdn.jsdelivr.net",
+		       "https://oss.maxcdn.com",
+		       "https://www.google-analytics.com",
+		       "https://ssl.google-analytics.com",
+		       "cse.google.com",
+		       "https://www.google.com",
+		       "https://pagead2.googlesyndication.com",
+		       "https://adservice.google.com",
+		       "https://www.googletagservices.com",
+		       "https://tagmanager.google.com",
+		       #"http://tagmanager.google.com"
+		       ]
+

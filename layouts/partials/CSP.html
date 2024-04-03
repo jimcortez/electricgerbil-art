@@ -1,0 +1,17 @@
+{{ $contentOptions := slice "default-src 'none'" }}
+{{ if .Site.Params.httponly }}
+    {{ $contentOptions = $contentOptions | append "upgrade-insecure-requests" }}
+    {{ $contentOptions = $contentOptions | append "block-all-mixed-content" }}
+{{ end }}
+{{ $contentOptions = $contentOptions | append (printf "child-src %s"     (delimit .Site.Params.csp.childsrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "font-src %s"      (delimit .Site.Params.csp.fontsrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "form-action %s"   (delimit .Site.Params.csp.formaction " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "frame-src %s"     (delimit .Site.Params.csp.framesrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "img-src %s"       (delimit .Site.Params.csp.imgsrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "object-src %s"    (delimit .Site.Params.csp.objectsrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "connect-src %s"   (delimit .Site.Params.csp.connectsrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "style-src %s"     (delimit .Site.Params.csp.stylesrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "script-src %s"    (delimit .Site.Params.csp.scriptsrc " ")) }}
+
+<meta http-equiv="Content-Security-Policy" {{ (printf "content=%q" (delimit $contentOptions ";")) | safeHTMLAttr }}>
+

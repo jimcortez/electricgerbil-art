@@ -1,0 +1,26 @@
+<style>
+    .image-gallery {display: flex; justify-content: center;}
+    .image-gallery ul {overflow: auto; margin-left: -1%!important;max-width: 1000px;}
+    .image-gallery li { display: block; margin: 0 0 1% 1%; width: 30%;}
+    .image-gallery li a {text-align: center; text-decoration: none!important; color: #777;}
+    .image-gallery li a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
+    .image-gallery li a img {width: 100%; display: block;}
+</style>
+
+<div class="image-gallery">
+<ul class="image-gallery">
+{{ range (.Site.GetPage (.Get "page_parent")).Pages.Limit 2 }}
+  {{- $image := .Resources.GetMatch (.Params.featured_image) -}}
+  {{if $image}}
+  {{- $imageurl := .RelPermalink -}}
+  {{- $imagetitle := index (split .Name "-") 0 -}}
+    <li>
+      <a href="{{ .RelPermalink }}" title="{{ $imagetitle }}" class="lightbox-image">
+        <img src="{{ ($image.Fill "600x600 q50").Permalink }}" alt="{{ $imagetitle }}" title="{{ $imagetitle }}">
+        <span>{{ $imagetitle }}</span>
+      </a>
+    </li>
+  {{end}}
+{{ end }}
+</ul>
+</div>

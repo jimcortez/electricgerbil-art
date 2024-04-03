@@ -1,6 +1,6 @@
 ---
 title: "Commune - Burning Man 2024"
-date: 2024-03-01T12:51:27-07:00
+date: 2024-09-01T12:51:27-07:00
 params:
     featured_image: commune-hero-images/commune_1.jpg
     featured_title: Commune (2024)

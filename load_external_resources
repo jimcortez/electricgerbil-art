@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+set -x
+
+cd assets/js-external
+wget https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css
+wget https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+wget https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js
+wget https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js
+wget https://raw.githubusercontent.com/jhvanderschee/hugocodex/main/static/js/carousel.js
+wget https://raw.githubusercontent.com/jhvanderschee/hugocodex/main/static/css/carousel.css

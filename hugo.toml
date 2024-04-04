@@ -55,6 +55,8 @@ theme = "hugo-sustain"
 [params.csp]
   childsrc = ["'self'"]
   fontsrc = ["'self'",
+             "https://electricgerbil.art/",
+             "https://*.electricgerbil.art/",
              "https://maxcdn.bootstrapcdn.com",
              "https://fonts.gstatic.com",
              "data:"]
@@ -63,6 +65,8 @@ theme = "hugo-sustain"
               "youtube.com",
               "www.youtube.com"]
   imgsrc = ["'self'",
+            "https://electricgerbil.art/",
+            "https://*.electricgerbil.art/",
             "data:",
             "https://www.gravatar.com",
             "https://ssl.gstatic.com",
@@ -72,6 +76,8 @@ theme = "hugo-sustain"
   objectsrc = ["'none'"]
   connectsrc = ["'self'", "https://www.google-analytics.com"]
   stylesrc = ["'self'",
+              "https://electricgerbil.art/",
+              "https://*.electricgerbil.art/",
               "'unsafe-inline'",
               "https://maxcdn.bootstrapcdn.com",
               "https://fonts.googleapis.com",
@@ -81,6 +87,8 @@ theme = "hugo-sustain"
   scriptsrc = ["'self'",
 		       "'unsafe-inline'",
 		       "'unsafe-eval'",
+           "https://electricgerbil.art/",
+           "https://*.electricgerbil.art/",
 		       "https://cdn.jsdelivr.net",
 		       "https://oss.maxcdn.com",
 		       "https://www.google-analytics.com",
@@ -91,6 +99,6 @@ theme = "hugo-sustain"
 		       "https://adservice.google.com",
 		       "https://www.googletagservices.com",
 		       "https://tagmanager.google.com",
-		       #"http://tagmanager.google.com"
+           "https://*.googletagmanager.com"
 		       ]
 

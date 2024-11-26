@@ -1,6 +1,9 @@
 ---
 title: "Playa Name Generator - Burning Man 2016-2023"
 date: 2016-09-04T12:51:27-07:00
+params:
+  featured_image: playa-name-generator/png-hero-images/png_1.JPG
+  featured_title: Playa Name Generator
 ---
 
 What's a playa name? It's a name you are gifted at Burning Man, and some people take it very seriously. We do not.

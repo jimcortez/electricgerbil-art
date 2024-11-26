@@ -10,6 +10,9 @@ disableFastRender = true
 
 theme = "hugo-sustain"
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [permalinks]
   post = "/:year/:month/:day/:slug"
 
@@ -23,7 +26,7 @@ theme = "hugo-sustain"
   custom_js  = ["js/carousel.js"]
 
   # flip this for localhost debugging
-  httpsOnly  = true
+  httpsOnly  = false
 
 # [params.social]
 #   Github        = "jimcortez"

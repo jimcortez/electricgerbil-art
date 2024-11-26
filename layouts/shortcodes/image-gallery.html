@@ -9,7 +9,7 @@
 
 <div class="image-gallery">
 <ul class="image-gallery">
-{{ range (.Site.GetPage (.Get "page_parent")).Pages.Limit 2 }}
+{{ range (.Site.GetPage (.Get "page_parent")).Pages.Limit 6 }}
   {{- $image := .Resources.GetMatch (.Params.featured_image) -}}
   {{if $image}}
   {{- $imageurl := .RelPermalink -}}

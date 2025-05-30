@@ -28,22 +28,18 @@ theme = "hugo-sustain"
   # flip this for localhost debugging
   httpsOnly  = false
 
-# [params.social]
-#   Github        = "jimcortez"
-#   Email         = ""
-#   Twitter       = ""
-#   LinkedIn      = "jimcortez"
-#   Stackoverflow = "u/695527"
-#   Medium        = ""
-#   Telegram      = ""
-#   RSS           = ""
+[params.social]
+  Instagram     = "electricgerbil"
+  Github        = ""
+  Email         = ""
+  Twitter       = ""
+  LinkedIn      = ""
+  Stackoverflow = ""
+  Medium        = ""
+  Telegram      = ""
+  RSS           = ""
 
 # ## Main Menu
-# [[menu.main]]
-#   name = "blog"
-#   weight = 100
-#   identifier = "blog"
-#   url = "/blog/"
 [[menu.main]]
   name = "art"
   identifier = "art"

@@ -1,5 +1,9 @@
 <div class="social">
   <ul class="social-links">
+    {{ with .Site.Params.Social.Instagram }}
+      <li><a href="https://instagram.com/{{ . }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+    {{ end }}
+
     {{ with .Site.Params.Social.Github }}
       <li><a href="https://github.com/{{ . }}"><i class="fa fa-github"></i></a></li>
     {{ end }}
@@ -32,4 +36,4 @@
       <li><a href="{{ . }}"><i class="fa fa-rss"></i></a></li>
     {{ end }}
   </ul>
-</div>
+</div> 

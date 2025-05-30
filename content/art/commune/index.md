@@ -31,9 +31,12 @@ Drawing inspiration from the bold, optimistic vision of "Googie" architecture, C
 ---
 
 # Materials/Technologies Used
-- LED's driven by 3 [QuinLED-Dig-Quad](https://quinled.info/pre-assembled-quinled-dig-quad/) (ESP32) microcontrollers networked to a raspberry pi
+- LED's driven by a mix of [QuinLED](https://quinled.info) (ESP32) microcontrollers (3 dig-quad, 2 dig-octa) networked to a raspberry pi
 - Raspberry Pi 4 Runs [Falcon Player](https://github.com/FalconChristmas/fpp) which sends out DDP commands to LED controllers
-- Used [X-Lights](https://xlights.org/) software for 3D modeling and sequencing, with custom built [ISF Shaders](https://isf.video/)
+- Initially used [X-Lights](https://xlights.org/) software for 3D modeling and sequencing, with custom built [ISF Shaders](https://isf.video/). These continue to be a backup.
+- Migrated to using [MadMapper](https://madmapper.com/) running on an M1 Mac Mini to drive real-time rendering of sequences. Migrated custom ISF shaders to MadMapper materials to take advantage of input generators to smooth transitions. MadMapper outputs ArtNet instructions over the network to Rpi.
+- For touch sensitive utensils, created a controller with [Adafruit QTPy RP2040](https://www.adafruit.com/product/4900) that uses [MPR121](https://www.adafruit.com/product/4830) capacitive touch modules to manipulate virtual MIDI sliders.
+- For Burning Man 2025, a new chandelier will be introduced that uses 6000+ LEDs in a sphere. This will be controlled with a [Kulp 16A-B](https://kulplights.com/product/k16a-b/) controller and uses the [Dr. Zzs Atlas v2](https://www.drzzs.com/shop/atlas-v2-digital-files/) 3d-printed frame as a base.
 
 ---
 # Original Fundraising Video

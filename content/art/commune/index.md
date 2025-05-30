@@ -8,24 +8,21 @@ params:
 
 {{< youtube nWjEKeLxS7c >}}
 
+Deep in the moonlit expanse of the playa, a mesmerizing constellation of lights beckons you forward. As you approach, an otherworldly scene materializes: an elegant dining table, seemingly transported from a retro-futuristic dream, floats in the dusty night air. Eight chairs await, each a silent invitation to join a gathering of strangers who will soon become confidants.
 
+The heart of Commune is a masterfully crafted table for eight, where technology and artistry intertwine. Intricate LED patterns dance beneath its surface, while a mysterious spherical centerpiece pulses with light, casting ever-changing patterns across the faces of those gathered. Above, a sculptural chandelier and beacon reach toward the stars, their light flowing through eight graceful metal pillars that support a protective canopy. Each place setting, permanently affixed to the table, stands ready for a feast that exists only in imagination.
 
-Biking in the deep playa, you are drawn to a series of lights set in patterns that aim to attract from a distance. You find a beautiful dining table has already been set, with others welcoming you for a meal that will never arrive. The ambiance changes as you interact with your fellow diners.
+But Commune is more than just a visual spectacle – it's an interactive experience that responds to human connection. Touch-sensitive elements throughout the piece create a playful dialogue between strangers: a gentle tap of your fork might plunge your neighbor's space into darkness, but when two participants reach out together, the entire installation erupts in a symphony of light and color. These shared moments of discovery transform casual encounters into lasting connections.
 
-The piece itself is primarily a custom-built table for 8 with inlaid LED’s, a spherical centerpiece (more LEDs), and place settings affixed. 8 sturdy chairs that fit the theme will be sourced. Encapsulating the piece are 8 legs custom fabricated from metal tubing, primarily supporting shade cloth, a chandelier, and a beacon. LEDs will coat the beacon and chandelier, as well as run along the poles.
-
-LED Animations synchronize with patterns or sequences that aim to delight and inspire conversation. As a stretch goal, sequences can also be manipulated by participants by touch. Touching a fork could cause another participant’s area to go dark, but touching together could trigger a surprise animation.
-
-Special thanks to the best crew: Russ, Matthew (and crew at [Radius Concepts](https://radius-concepts.com/)), Mina, and Eugenia
+Special thanks to our visionary crew: Russ, Matthew (and the talented team at [Radius Concepts](https://radius-concepts.com/)), Mina, and Eugenia
 
 ## Inspiration
 
-I have a 3 year old and our family plays a game we call “Friends for Dinner”. He pretends to be a new friend over for a meal, and he makes up answers to our questions. Turns out the idea of meeting people at the table for the first time is not actually common. It actually creates a unique shared experience that is quite powerful.
+The inspiration for Commune comes from a charming family tradition. The artist's three-year-old loves to play a game called "Friends for Dinner" where he pretends to be a new dinner guest, making up delightful answers to questions at the table. It turns out that meeting people at the dinner table for the first time isn't as common as you might think - but when it happens, it creates a uniquely powerful shared experience.
 
-In 2023, I brought the artwork “[Friends for Dinner](https://electricgerbil.art/art/friends-for-dinner/)”, which was (in my opinion) an immense success. Participants used the space exactly how I intended, without any instruction or confusion. When there were open seats, newcomers were asked to sit. Snacks were shared and drinks freely shared. It had the magic of immediacy, spurring deep conversation between strangers. I hope to recreate this magic, but with a different style and sophistication.
+In 2023, the artist brought "[Friends for Dinner](https://electricgerbil.art/art/friends-for-dinner/)" to the playa, and it was, by all measures, an immense success. The space worked exactly as envisioned - no instructions needed, no confusion. When seats were open, newcomers naturally joined in. Snacks and drinks were shared freely among strangers. The piece captured that magical immediacy that sparks deep conversations between people who'd just met. Now with Commune, the artist aims to recreate this magic with an added layer of sophistication and style.
 
-Taking inspiration from the “Googie” style of architecture, I hope to create a retro-futuristic space where people can connect at a deeply personal level.
-
+Drawing inspiration from the bold, optimistic vision of "Googie" architecture, Commune reimagines the retro-futuristic aesthetic of mid-century America as a catalyst for authentic human connection. It's where the Space Age meets intimate dining, creating an environment where strangers can discover the extraordinary in each other.
 
 ---
 
@@ -37,7 +34,6 @@ Taking inspiration from the “Googie” style of architecture, I hope to create
 - LED's driven by 3 [QuinLED-Dig-Quad](https://quinled.info/pre-assembled-quinled-dig-quad/) (ESP32) microcontrollers networked to a raspberry pi
 - Raspberry Pi 4 Runs [Falcon Player](https://github.com/FalconChristmas/fpp) which sends out DDP commands to LED controllers
 - Used [X-Lights](https://xlights.org/) software for 3D modeling and sequencing, with custom built [ISF Shaders](https://isf.video/)
-
 
 ---
 # Original Fundraising Video

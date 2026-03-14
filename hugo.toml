@@ -10,6 +10,13 @@ disableFastRender = true
 
 theme = "hugo-sustain"
 
+[module]
+  [[module.imports]]
+    path = "github.com/suyundukov/hugo-sustain"
+
+[build]
+  writeStats = false
+
 [markup.goldmark.renderer]
   unsafe = true
 

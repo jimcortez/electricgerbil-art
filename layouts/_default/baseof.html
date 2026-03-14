@@ -27,9 +27,9 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->` | safeHTML }}
 
-    {{- if .Site.GoogleAnalytics }}
-        {{ template "_internal/google_analytics.html" . }}
-    {{- end}}
+    {{- if site.Config.Services.GoogleAnalytics.ID }}
+      {{ template "_internal/google_analytics.html" . }}
+    {{- end }}
 
   </head>
   <body>

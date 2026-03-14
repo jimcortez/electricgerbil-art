@@ -1,12 +1,20 @@
 ---
-title: "Commune - Burning Man 2024"
+title: "Commune"
 date: 2024-09-01T12:51:27-07:00
 params:
     featured_image: commune-hero-images/commune_1.jpg
-    featured_title: Commune (2024)
+    featured_title: Commune (2024-2025)
 ---
 
 {{< youtube nWjEKeLxS7c >}}
+
+---
+
+ - [Burning Man 2024](https://burningman.org/about/history/brc-history/event-archives/2024-event-archive/2024-art-installations/?support_project=0#a2IVI000000ErE92AK) | August 25 - September 2, 2024
+ - [unSCruz 2025](https://unscruz.org/) (Grant Recipient) | May 1 - May 4, 2025
+ - [Burning Man 2025](https://burningman.org/event/2025-art-listings/?yyyy=&aq=commune&support_project=0#a2IVI0000012q0L2AQ) | August 24 - September 1, 2025
+
+---
 
 Deep in the moonlit expanse of the playa, a mesmerizing constellation of lights beckons you forward. As you approach, an otherworldly scene materializes: an elegant dining table, seemingly transported from a retro-futuristic dream, floats in the dusty night air. Eight chairs await, each a silent invitation to join a gathering of strangers who will soon become confidants.
 

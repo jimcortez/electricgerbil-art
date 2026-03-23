@@ -1,0 +1,11 @@
+name = "electric-gerbil"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "Dark, media-forward portfolio theme for Electric Gerbil."
+homepage = "https://electricgerbil.art/"
+tags = ["portfolio", "art", "dark", "gallery"]
+features = ["responsive", "media-forward", "project-spotlight"]
+min_version = "0.111.0"
+
+[author]
+  name = "Electric Gerbil"

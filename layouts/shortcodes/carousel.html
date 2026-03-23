@@ -2,18 +2,31 @@
 {{ $fitWidth := (.Get "fitWidth") }}
 {{ $unit := (.Get "unit") }}
 {{ $items := (.Get "items") }}
+{{ $images := (.Get "images") }}
+{{ $slides := slice }}
+{{ if $images }}
+  {{ range $path := split $images "," }}
+    {{ $path = trim $path " " }}
+    {{ $slide := $.Page.Resources.GetMatch $path }}
+    {{ if $slide }}
+      {{ $slides = $slides | append $slide }}
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ $slides = .Page.Resources.Match (print (.Get "data") "/*") }}
+{{ end }}
 <div id="carousel{{ .Ordinal }}" class="carousel" duration="{{ .Get "duration" }}">
     <ul>
-      {{- range $index, $slide := .Page.Resources.Match (print (.Get "data") "/*") }}
+      {{- range $index, $slide := $slides }}
         {{/*  {{ $slide := $slide.Fit (printf "%sx%s Lanczos" $height $fitWidth ) }}  */}}
         <li id="c{{ $.Ordinal }}_slide{{ add $index 1}}" style="min-width: calc(100%/{{ $items }}); padding-bottom: {{ $height }}{{ $unit }};"><img src="{{ $slide.RelPermalink }}" alt="{{ $slide }}" /><div><div></div></div></li>
       {{- end }}
     </ul>
-    <ol>
-      {{- range $index, $page := .Page.Resources.Match (print (.Get "data") "/*") }}
-        <li><a href="#c{{ $.Ordinal }}_slide{{ add $index 1 }}"></a></li>
+    <ol aria-label="Carousel slide navigation">
+      {{- range $index, $slide := $slides }}
+        <li><a href="#c{{ $.Ordinal }}_slide{{ add $index 1 }}" aria-label="Go to slide {{ add $index 1 }}"></a></li>
       {{- end }}
     </ol>
-    <div class="prev">&lsaquo;</div>
-    <div class="next">&rsaquo;</div>
+    <button class="prev" type="button" aria-label="Previous slide">&lsaquo;</button>
+    <button class="next" type="button" aria-label="Next slide">&rsaquo;</button>
 </div>

@@ -3,7 +3,14 @@ title: "Commune"
 date: 2024-09-01T12:51:27-07:00
 params:
     featured_image: commune-hero-images/commune_1.jpg
-    featured_title: Commune (2024-2025)
+    featured_title: Commune (2024-2026)
+    featured_description_short: Interactive retro-futurist light-up dining table
+    featured_description: "Commune is an interactive retro-futurist dining installation by Electric Gerbil, using responsive LED choreography to turn strangers into collaborators."
+    homepage_hero_images:
+        - commune-hero-images/commune_1.jpg
+        - commune-hero-images/commune_3.jpg
+        - commune-hero-images/commune_4.jpg
+        - commune-hero-images/commune_5.jpg
 ---
 
 {{< youtube nWjEKeLxS7c >}}
@@ -13,6 +20,7 @@ params:
  - [Burning Man 2024](https://burningman.org/about/history/brc-history/event-archives/2024-event-archive/2024-art-installations/?support_project=0#a2IVI000000ErE92AK) | August 25 - September 2, 2024
  - [unSCruz 2025](https://unscruz.org/) (Grant Recipient) | May 1 - May 4, 2025
  - [Burning Man 2025](https://burningman.org/event/2025-art-listings/?yyyy=&aq=commune&support_project=0#a2IVI0000012q0L2AQ) | August 24 - September 1, 2025
+ - [unSCruz 2026](https://unscruz.org/) (Grant Recipient) | April 30 - May 3, 2026
 
 ---
 
@@ -34,7 +42,7 @@ Drawing inspiration from the bold, optimistic vision of "Googie" architecture, C
 
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" data="commune-hero-images" >}}
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" data="commune-hero-images" images="commune-hero-images/commune_1.jpg,commune-hero-images/commune_2.jpg,commune-hero-images/commune_3.jpg,commune-hero-images/commune_4.jpg,commune-hero-images/commune_5.jpg,commune-hero-images/commune_6.jpg,commune-hero-images/commune_7.png" >}}
 
 ---
 

@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <article class="container section project-single">
+    <header class="single-header">
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Date.Format "January 2, 2006" }}</p>
+    </header>
+
+    <section class="project-content">
+      {{ .Content }}
+    </section>
+  </article>
+{{ end }}

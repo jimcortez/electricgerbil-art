@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="container footer-wrap">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.footer_copyright | default "Electric Gerbil Art by Jim Cortez. All rights reserved." }}</p>
+    <div class="footer-links">
+      {{ with .Site.Params.social.Instagram }}
+        <a href="https://instagram.com/{{ . }}" target="_blank" rel="noopener noreferrer">@{{ . }}</a>
+      {{ end }}
+      <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Built with Hugo</a>
+    </div>
+  </div>
+</footer>

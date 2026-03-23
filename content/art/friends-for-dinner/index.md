@@ -4,6 +4,8 @@ date: 2023-09-04T12:51:27-07:00
 params:
     featured_image: ffd-hero-images/ffd_1.jpg
     featured_title: Friends for Dinner (2023)
+    featured_description_short: A gaudy dinner-table with cubic chandelier.
+    featured_description: "Friends for Dinner is Electric Gerbil's social-light artwork that transforms a familiar dinner table into an inclusive deep-playa experience."
 ---
 
 Friends for Dinner was a placed art piece at Burning Man 2023. Participants experienced a large "fancy" dining room table that invited conversation and inclusion in a familiar place, but in an unfamiliar setting. Using more than 2000 individually-addressable LED's, the piece had hours of unique animations that tied the chandelier, plates, and orbs together.

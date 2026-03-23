@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section class="container section">
+    <div class="section-head">
+      <h1>{{ .Title }}</h1>
+    </div>
+    <div class="project-grid">
+      {{ range .Pages.ByDate.Reverse }}
+        {{ $thumb := .Resources.GetMatch .Params.featured_image }}
+        <article class="project-card">
+          <a href="{{ .RelPermalink }}">
+            {{ if $thumb }}
+              <img src="{{ ($thumb.Fill "800x800 q70").RelPermalink }}" alt="{{ .Title }}">
+            {{ else }}
+              <div class="card-fallback">{{ .Title }}</div>
+            {{ end }}
+            <div class="card-copy">
+              <h2>{{ .Title }}</h2>
+              <p>{{ with .Params.featured_title }}{{ . }}{{ else }}{{ .Date.Format "January 2006" }}{{ end }}</p>
+            </div>
+          </a>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

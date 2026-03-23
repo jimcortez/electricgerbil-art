@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="{{ "/" | relURL }}">
+      <img class="brand-logo" src="{{ .Site.Params.avatar | relURL }}" alt="Electric Gerbil logo">
+      <span class="brand-title">{{ .Site.Title }} by Jim Cortez</span>
+    </a>
+    <nav class="site-nav">
+      {{ range .Site.Menus.main }}
+        {{ if ne .Identifier "art" }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      {{ end }}
+      {{ with .Site.Params.social.Instagram }}
+        <a class="nav-cta" href="https://instagram.com/{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Follow Electric Gerbil on Instagram">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+          <span>Instagram</span>
+        </a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

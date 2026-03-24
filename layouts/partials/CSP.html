@@ -12,6 +12,8 @@
 {{ $contentOptions = $contentOptions | append (printf "connect-src %s"   (delimit .Site.Params.csp.connectsrc " ")) }}
 {{ $contentOptions = $contentOptions | append (printf "style-src %s"     (delimit .Site.Params.csp.stylesrc " ")) }}
 {{ $contentOptions = $contentOptions | append (printf "script-src %s"    (delimit .Site.Params.csp.scriptsrc " ")) }}
+{{ $contentOptions = $contentOptions | append (printf "media-src %s"    (delimit .Site.Params.csp.mediasrc " ")) }}
+
 
 <meta http-equiv="Content-Security-Policy" {{ (printf "content=%q" (delimit $contentOptions ";")) | safeHTMLAttr }}>
 

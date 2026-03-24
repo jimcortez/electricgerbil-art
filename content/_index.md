@@ -1,7 +1,7 @@
 ---
 ---
-# Electric Gerbil Arts
+{{< homepage-featured-project >}}
 
-[Art](/art) by [Jim Cortez](https://jimcortez.com)
+{{< homepage-project-list limit="6" >}}
 
-{{<image-gallery page_parent="art" >}}
+{{< homepage-about-artist >}}

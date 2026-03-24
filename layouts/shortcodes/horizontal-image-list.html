@@ -1,0 +1,28 @@
+{{ $imagesParam := .Get "images" }}
+{{ $height := .Get "height" | default "300" }}
+{{ $width := .Get "width" | default "1200" }}
+{{ $quality := .Get "quality" | default "85" }}
+{{ $fitMode := .Get "fit" | default "fit" }}
+{{ $images := split $imagesParam "," }}
+
+<div style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start;">
+  {{ range $raw := $images }}
+    {{ $path := trim $raw " " }}
+    {{ if $path }}
+      {{ $img := $.Page.Resources.GetMatch $path }}
+      {{ if $img }}
+        {{ $resizeSpec := printf "x%s q%s" $height $quality }}
+        {{ $fitSpec := printf "%sx%s q%s" $width $height $quality }}
+        {{ $processed := $img }}
+        {{ if eq (lower $fitMode) "resize" }}
+          {{ $processed = $img.Resize $resizeSpec }}
+        {{ else }}
+          {{ $processed = $img.Fit $fitSpec }}
+        {{ end }}
+        <a href="{{ $img.RelPermalink }}">
+          <img src="{{ $processed.RelPermalink }}" alt="{{ $img.Name }}" style="height:{{ $height }}px; width:auto; display:block;">
+        </a>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</div>

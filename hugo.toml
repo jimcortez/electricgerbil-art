@@ -8,7 +8,7 @@ googleAnalytics = "G-550TQB4CNE"
 enableRobotsTXT = true
 disableFastRender = true
 
-theme = "electric-gerbil"
+theme = ["hugo-video","electric-gerbil"]
 
 [build]
   writeStats = false
@@ -34,7 +34,7 @@ theme = "electric-gerbil"
 
 [params.social]
   Instagram     = "electricgerbil"
-  Github        = ""
+  Github        = "jimcortez"
   Email         = ""
   Twitter       = ""
   LinkedIn      = ""
@@ -85,6 +85,11 @@ theme = "electric-gerbil"
               "https://cdn.jsdelivr.net",
               "https://tagmanager.google.com",
               "https://fonts.googleapis.com"]
+  mediasrc = ["'self'",
+              "https://electricgerbil.art/",
+              "https://*.electricgerbil.art/",
+              "https://www.youtube.com",
+              "https://www.youtube-nocookie.com"]
   scriptsrc = ["'self'",
 		       "'unsafe-inline'",
 		       "'unsafe-eval'",

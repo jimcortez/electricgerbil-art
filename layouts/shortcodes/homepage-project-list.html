@@ -1,0 +1,30 @@
+{{ $limit := int (default 6 (.Get "limit")) }}
+{{ $title := default "Projects" (.Get "title") }}
+{{ $artPages := where .Site.RegularPages "Section" "art" }}
+{{ $artPages = where $artPages ".Params.featured_image" "!=" nil }}
+{{ $artPages = where $artPages ".Params.featured_title" "!=" nil }}
+
+<section class="container section">
+  <div class="section-head">
+    <h2>{{ $title }}</h2>
+    <a href="{{ "/art/" | relURL }}">See all</a>
+  </div>
+  <div class="project-grid">
+    {{ range first $limit ($artPages.ByDate.Reverse) }}
+      {{ $thumb := .Resources.GetMatch .Params.featured_image }}
+      <article class="project-card">
+        <a href="{{ .RelPermalink }}">
+          {{ if $thumb }}
+            <img src="{{ ($thumb.Fill "800x800 q70").RelPermalink }}" alt="{{ .Title }}">
+          {{ else }}
+            <div class="card-fallback">{{ .Title }}</div>
+          {{ end }}
+          <div class="card-copy">
+            <h3>{{ .Title }}</h3>
+            <p>{{ with .Params.featured_description_short }}{{ . }}{{ else }}{{ with .Params.featured_title }}{{ . }}{{ else }}{{ .Date.Format "2006" }}{{ end }}{{ end }}</p>
+          </div>
+        </a>
+      </article>
+    {{ end }}
+  </div>
+</section>

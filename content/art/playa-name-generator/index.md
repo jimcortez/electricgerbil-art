@@ -17,7 +17,7 @@ Thanks to Rusty as co-creator.
 
 ---
 
-*Materials/Technologies Used*
+## Materials/Technologies Used
 - Raspberry Pi 4 Runs custom software based on python & twisted framework, web UI writted in Angular
 - USB connected button with custom events for cover open/close
 - Entire system runs on solar charged batteries in a custom box.

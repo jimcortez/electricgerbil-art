@@ -17,7 +17,7 @@ Project was mothballed after several electrical fires, volunteers swapping polar
 
 ---
 
-*Materials/Technologies Used*
+## Materials/Technologies Used
 - Raspberry Pi 4 Runs custom software based on python & twisted framework
 - Over 30amps of power at peek gerbil performance
 - Entire system runs on solar charged batteries in a custom box.

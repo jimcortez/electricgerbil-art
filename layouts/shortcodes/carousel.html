@@ -3,30 +3,44 @@
 {{ $unit := (.Get "unit") }}
 {{ $items := (.Get "items") }}
 {{ $images := (.Get "images") }}
+{{ $videoAutoplay := (default "true" (.Get "videoAutoplay")) }}
+{{ $videoLoop := (default "true" (.Get "videoLoop")) }}
+{{ $videoMuted := (default "true" (.Get "videoMuted")) }}
+{{ $autoDurationVideo := (default "false" (.Get "auto-duration-video")) }}
+{{ $duration := (.Get "duration") }}
 {{ $slides := slice }}
 {{ if $images }}
   {{ range $path := split $images "," }}
     {{ $path = trim $path " " }}
-    {{ $slide := $.Page.Resources.GetMatch $path }}
-    {{ if $slide }}
-      {{ $slides = $slides | append $slide }}
+    {{ $resource := $.Page.Resources.GetMatch $path }}
+    {{ if $resource }}
+      {{ if eq $resource.MediaType.MainType "image" }}
+        {{ $slides = $slides | append (dict "resource" $resource "kind" "image") }}
+      {{ else if eq $resource.MediaType.MainType "video" }}
+        {{ $slides = $slides | append (dict "resource" $resource "kind" "video") }}
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ else }}
-  {{ $slides = .Page.Resources.Match (print (.Get "data") "/*") }}
+  {{ $resources := .Page.Resources.Match (print (.Get "data") "/*") }}
+  {{ range $resource := $resources }}
+    {{ if eq $resource.MediaType.MainType "image" }}
+      {{ $slides = $slides | append (dict "resource" $resource "kind" "image") }}
+    {{ else if eq $resource.MediaType.MainType "video" }}
+      {{ $slides = $slides | append (dict "resource" $resource "kind" "video") }}
+    {{ end }}
+  {{ end }}
 {{ end }}
-<div id="carousel{{ .Ordinal }}" class="carousel" duration="{{ .Get "duration" }}">
-    <ul>
-      {{- range $index, $slide := $slides }}
-        {{/*  {{ $slide := $slide.Fit (printf "%sx%s Lanczos" $height $fitWidth ) }}  */}}
-        <li id="c{{ $.Ordinal }}_slide{{ add $index 1}}" style="min-width: calc(100%/{{ $items }}); padding-bottom: {{ $height }}{{ $unit }};"><img src="{{ $slide.RelPermalink }}" alt="{{ $slide }}" /><div><div></div></div></li>
-      {{- end }}
-    </ul>
-    <ol aria-label="Carousel slide navigation">
-      {{- range $index, $slide := $slides }}
-        <li><a href="#c{{ $.Ordinal }}_slide{{ add $index 1 }}" aria-label="Go to slide {{ add $index 1 }}"></a></li>
-      {{- end }}
-    </ol>
-    <button class="prev" type="button" aria-label="Previous slide">&lsaquo;</button>
-    <button class="next" type="button" aria-label="Next slide">&rsaquo;</button>
-</div>
+{{ partial "carousel-render.html" (dict
+  "id" (print "carousel" .Ordinal)
+  "class" "carousel"
+  "items" $items
+  "height" $height
+  "unit" $unit
+  "duration" $duration
+  "autoDurationVideo" $autoDurationVideo
+  "videoAutoplay" $videoAutoplay
+  "videoLoop" $videoLoop
+  "videoMuted" $videoMuted
+  "slides" $slides
+) }}

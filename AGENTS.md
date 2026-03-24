@@ -23,14 +23,14 @@ Usage notes:
 <available_skills>
 
 <skill>
-<name>brainstorming</name>
-<description>"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."</description>
+<name>avoid-ai-writing</name>
+<description>"Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table"</description>
 <location>global</location>
 </skill>
 
 <skill>
-<name>executing-plans</name>
-<description>Use when you have a written implementation plan to execute in a separate session with review checkpoints</description>
+<name>brainstorming</name>
+<description>"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."</description>
 <location>global</location>
 </skill>
 
@@ -42,7 +42,13 @@ Usage notes:
 
 <skill>
 <name>hugo</name>
-<description>|</description>
+<description>This skill provides comprehensive knowledge for building static websites with Hugo static site generator. It should be used when setting up Hugo projects (blogs, documentation sites, landing pages, portfolios), integrating Tailwind CSS v4 for custom styling, integrating headless CMS systems (Sveltia CMS or TinaCMS), deploying to Cloudflare Workers with Static Assets, configuring themes and templates, and preventing common Hugo setup errors.</description>
+<location>global</location>
+</skill>
+
+<skill>
+<name>interactive-portfolio</name>
+<description>"You know a portfolio isn't a resume - it's a first impression that needs to convert. You balance creativity with usability. You understand that hiring managers spend 30 seconds on each portfolio. You make those 30 seconds count. You help people stand out without being gimmicky."</description>
 <location>global</location>
 </skill>
 

@@ -30,7 +30,7 @@
     </main>
     {{ partial "eg-footer.html" . }}
     {{ range .Site.Params.custom_js }}
-      <script src="{{ . | relURL }}"></script>
+      <script src="{{ . | relURL }}?v=20260324b"></script>
     {{ end }}
   </body>
 </html>

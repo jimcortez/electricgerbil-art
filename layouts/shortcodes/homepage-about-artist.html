@@ -1,0 +1,29 @@
+{{ $aboutPath := default "/about" (.Get "path") }}
+{{ $aboutPage := .Site.GetPage $aboutPath }}
+{{ $artistImage := "" }}
+{{ $artistSynopsis := "" }}
+{{ if $aboutPage }}
+  {{ with $aboutPage.Params.homepage_image }}
+    {{ $artistImage = . }}
+  {{ end }}
+  {{ with $aboutPage.Params.homepage_description }}
+    {{ $artistSynopsis = . }}
+  {{ end }}
+{{ end }}
+
+<section id="artist" class="container section synopsis">
+  <div class="artist-card">
+    <figure class="artist-photo-wrap">
+      {{ if $artistImage }}
+        <a href="{{ "/about/" | relURL }}">
+          <img class="artist-photo" src="{{ $artistImage | relURL }}" alt="Jim Cortez, artist behind Electric Gerbil">
+        </a>
+      {{ end }}
+    </figure>
+    <div class="artist-copy">
+      <h2><a href="{{ "/about/" | relURL }}">About the Artist</a></h2>
+      {{ if $artistSynopsis }}<p>{{ $artistSynopsis }}</p>{{ end }}
+      {{ partial "eg-social.html" .Page }}
+    </div>
+  </div>
+</section>

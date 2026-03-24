@@ -29,6 +29,10 @@
   object-fit: contain;
   background: linear-gradient(180deg, rgba(7, 10, 17, 0.7), rgba(7, 10, 17, 0.2));
 }
+.carousel ul li > video {
+  object-fit: contain;
+  background: linear-gradient(180deg, rgba(7, 10, 17, 0.7), rgba(7, 10, 17, 0.2));
+}
 .carousel ul li > div {display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 20px;}
 .carousel ol {
   position: absolute;

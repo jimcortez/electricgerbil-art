@@ -54,53 +54,40 @@ theme = ["hugo-video","electric-gerbil"]
   url = "/about/"
 
 [params.csp]
+  # Sources actually used by the site:
+  #   styles  -> self + fonts.googleapis.com (Outfit)
+  #   fonts   -> fonts.gstatic.com (Outfit woff2)
+  #   scripts -> self + Google Tag Manager (loads gtag.js)
+  #   xhr     -> Google Analytics collect endpoint
+  #   frames  -> www.youtube.com (project page video embeds)
+  # 'unsafe-inline' is for the inline gtag bootstrap; 'unsafe-eval' is for gtag.js itself.
+  # *.electricgerbil.art is kept as a forward-compat slot for a future asset subdomain.
   childsrc = ["'self'"]
   fontsrc = ["'self'",
-             "https://electricgerbil.art/",
              "https://*.electricgerbil.art/",
              "https://fonts.gstatic.com",
              "data:"]
   formaction = ["'self'"]
   framesrc = ["'self'",
-              "youtube.com",
-              "www.youtube.com"]
+              "https://www.youtube.com"]
   imgsrc = ["'self'",
-            "https://electricgerbil.art/",
             "https://*.electricgerbil.art/",
-            "data:",
-            "https://www.gravatar.com",
-            "https://ssl.gstatic.com",
-            "https://www.gstatic.com",
-            "https://www.google-analytics.com"]
-
+            "data:"]
   objectsrc = ["'none'"]
-  connectsrc = ["'self'", "https://www.google-analytics.com"]
+  connectsrc = ["'self'",
+                "https://www.google-analytics.com",
+                "https://fonts.googleapis.com",
+                "https://fonts.gstatic.com"]
   stylesrc = ["'self'",
-              "https://electricgerbil.art/",
-              "https://*.electricgerbil.art/",
               "'unsafe-inline'",
-              "https://fonts.googleapis.com",
-              "https://cdn.jsdelivr.net",
-              "https://tagmanager.google.com"]
-  mediasrc = ["'self'",
-              "https://electricgerbil.art/",
               "https://*.electricgerbil.art/",
-              "https://www.youtube.com",
-              "https://www.youtube-nocookie.com"]
+              "https://fonts.googleapis.com"]
+  mediasrc = ["'self'",
+              "https://*.electricgerbil.art/"]
   scriptsrc = ["'self'",
-		       "'unsafe-inline'",
-		       "'unsafe-eval'",
-           "https://electricgerbil.art/",
-           "https://*.electricgerbil.art/",
-		       "https://cdn.jsdelivr.net",
-		       "https://www.google-analytics.com",
-		       "https://ssl.google-analytics.com",
-		       "cse.google.com",
-		       "https://www.google.com",
-		       "https://pagead2.googlesyndication.com",
-		       "https://adservice.google.com",
-		       "https://www.googletagservices.com",
-		       "https://tagmanager.google.com",
-           "https://*.googletagmanager.com"
-		       ]
+               "'unsafe-inline'",
+               "'unsafe-eval'",
+               "https://*.electricgerbil.art/",
+               "https://www.googletagmanager.com",
+               "https://www.google-analytics.com"]
 

@@ -7,14 +7,14 @@ params:
     featured_description_short: Interactive retro-futurist light-up dining table
     featured_description: "Commune is an interactive retro-futurist dining installation by Electric Gerbil, using responsive LED choreography to turn strangers into collaborators."
     homepage_hero_images:
-        - videos/commune_showcase_unscruz25_2_weboptimized.mp4
-        - videos/commune_bts_prebuild_boxshop25_1_weboptimized.mp4
+        - videos/commune_showcase_unscruz25_2.mp4
+        - videos/commune_bts_prebuild_boxshop25_1.mp4
         - commune-hero-images/commune_participants_bman25_4.jpg
         - commune-hero-images/commune_participants_bman25_5.jpg
         - commune-hero-images/commune_participants_boxshop25_6.jpg
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_participants_bman25_4.jpg,videos/commune_showcase_unscruz25_2_weboptimized.mp4,videos/commune_bts_prebuild_boxshop25_1_weboptimized.mp4,videos/commune_bts_prebuild_boxshop25_2_weboptimized.mp4,commune-hero-images/commune_participants_boxshop25_6.jpg" >}}
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_participants_bman25_4.jpg,videos/commune_showcase_unscruz25_2.mp4,videos/commune_bts_prebuild_boxshop25_1.mp4,videos/commune_bts_prebuild_boxshop25_2.mp4,commune-hero-images/commune_participants_boxshop25_6.jpg" >}}
 
 Deep in the moonlit expanse of the playa, a mesmerizing constellation of lights beckons you forward. As you approach, an otherworldly scene materializes: an elegant dining table, seemingly transported from a retro-futuristic dream, floats in the dusty night air. Eight chairs await, each a silent invitation to join a gathering of strangers who will soon become confidants.
 

@@ -169,7 +169,11 @@ checkout: `git submodule update --init --recursive`.
   `fontsrc`, `imgsrc`, `mediasrc`, `framesrc`, `connectsrc`) — don't widen the
   policy with wildcards.
 - **Keep videos web-optimized.** New hero/carousel clips go through
-  `ffmpeg-web-loop.sh` and ship as `*_weboptimized.mp4`.
+  `ffmpeg-web-loop.sh` (silent, fast-start, 800px-wide loop) and ship as
+  the only copy in the bundle — drop the script's default `_weboptimized`
+  suffix on output (`-o <name>.mp4`) so the committed filename matches the
+  media filename convention below. Don't commit a separate non-optimized
+  master.
 - **Page bundles, not loose files.** New art lives at
   `content/art/<slug>/index.md` with images/videos colocated in the bundle so
   `Resources.GetMatch` resolves them. Reference resources by path **relative
@@ -190,14 +194,13 @@ checkout: `git submodule update --init --recursive`.
   - `<category_order_number>` is the 1-based ordering **within the category**
     for that project (not a global counter). Example: the 4th `participants`
     photo is `_4` even if it's the 8th file overall.
-  - Web-optimized video variants keep the same base name with a
-    `_weboptimized` suffix (e.g. `commune_showcase_unscruz25_2.mp4` →
-    `commune_showcase_unscruz25_2_weboptimized.mp4`).
+  - Videos are web-optimized in place — only the optimized copy lives in
+    the bundle, named per the convention (no `_weboptimized` suffix).
   - Examples from `content/art/commune/`:
     - `commune-hero-images/commune_showcase_bman24_1.jpg`
     - `commune-hero-images/commune_participants_bman25_4.jpg`
     - `commune-hero-images/commune_bts_crew_1.jpg`
-    - `videos/commune_bts_prebuild_boxshop25_2_weboptimized.mp4`
+    - `videos/commune_bts_prebuild_boxshop25_2.mp4`
 - **Featured-project guard.** Projects that omit `featured_image` or
   `featured_title` are silently filtered out of the homepage list and the
   hero. If a new project isn't appearing, check both params.

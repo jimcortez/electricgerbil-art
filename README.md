@@ -211,7 +211,7 @@ params:
     featured_description_short: Short tagline for the project grid card
     featured_description: Longer description used on the homepage hero
     homepage_hero_images:                          # optional; ordered slides
-        - videos/clip_weboptimized.mp4
+        - videos/clip.mp4
         - hero-images/cover.jpg
         - hero-images/detail.jpg
 ---
@@ -238,12 +238,13 @@ Hero clips should be silent, H.264, fast-start, ~800px wide so they autoplay
 on mobile and stay under a couple MB. Use the helper:
 
 ```bash
-./scripts/ffmpeg-web-loop.sh path/to/raw.mov
-# writes path/to/raw_weboptimized.mp4
+./scripts/ffmpeg-web-loop.sh -o path/to/clip.mp4 path/to/raw.mov
 ```
 
-Then reference the produced `*_weboptimized.mp4` from `homepage_hero_images`
-or a `{{< carousel >}}` shortcode.
+The script defaults to writing `<input>_weboptimized.mp4`; pass `-o` to land
+the output directly on the canonical bundle filename so we don't ship two
+copies. Only the optimized clip lives in the bundle — reference it from
+`homepage_hero_images` or a `{{< carousel >}}` shortcode.
 
 ## Maintenance scripts
 

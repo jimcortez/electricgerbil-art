@@ -174,6 +174,30 @@ checkout: `git submodule update --init --recursive`.
   `content/art/<slug>/index.md` with images/videos colocated in the bundle so
   `Resources.GetMatch` resolves them. Reference resources by path **relative
   to the bundle** in front matter and shortcodes.
+- **Media filename convention.** Name images and videos inside a project
+  bundle as `<art_project>_<category-slug>_<description_with_underscores>_<category_order_number>.<ext>`.
+  - `<art_project>` is the project slug (e.g. `commune`).
+  - `<category-slug>` groups files by purpose. Current categories:
+    `showcase` (hero/finished installation shots), `participants` (people
+    interacting with the piece), `bts` (behind-the-scenes: crew, prebuild,
+    original renders, fabrication), and any new category needed for the
+    project. Sub-category descriptors (`crew`, `prebuild`, `original_render`,
+    etc.) live in the description segment.
+  - `<description>` describes the contents with underscores between words. By
+    convention this includes the event/location shorthand
+    (`bman24`, `bman25`, `unscruz25`, `boxshop25`, …) so files sort/group by
+    venue.
+  - `<category_order_number>` is the 1-based ordering **within the category**
+    for that project (not a global counter). Example: the 4th `participants`
+    photo is `_4` even if it's the 8th file overall.
+  - Web-optimized video variants keep the same base name with a
+    `_weboptimized` suffix (e.g. `commune_showcase_unscruz25_2.mp4` →
+    `commune_showcase_unscruz25_2_weboptimized.mp4`).
+  - Examples from `content/art/commune/`:
+    - `commune-hero-images/commune_showcase_bman24_1.jpg`
+    - `commune-hero-images/commune_participants_bman25_4.jpg`
+    - `commune-hero-images/commune_bts_crew_1.jpg`
+    - `videos/commune_bts_prebuild_boxshop25_2_weboptimized.mp4`
 - **Featured-project guard.** Projects that omit `featured_image` or
   `featured_title` are silently filtered out of the homepage list and the
   hero. If a new project isn't appearing, check both params.

@@ -2,19 +2,19 @@
 title: "Commune"
 date: 2024-09-01T12:51:27-07:00
 params:
-    featured_image: commune-hero-images/commune_1.jpg
+    featured_image: commune-hero-images/commune_showcase_bman24_1.jpg
     featured_title: Commune (2024-2026)
     featured_description_short: Interactive retro-futurist light-up dining table
     featured_description: "Commune is an interactive retro-futurist dining installation by Electric Gerbil, using responsive LED choreography to turn strangers into collaborators."
     homepage_hero_images:
-        - videos/unscruz_video_weboptimized.mp4
-        - videos/sphere_weboptimized.mp4
-        - commune-hero-images/commune_8.jpg
-        - commune-hero-images/commune_9.jpg
-        - commune-hero-images/commune_10.jpg
+        - videos/commune_showcase_unscruz25_2_weboptimized.mp4
+        - videos/commune_bts_prebuild_boxshop25_1_weboptimized.mp4
+        - commune-hero-images/commune_participants_bman25_4.jpg
+        - commune-hero-images/commune_participants_bman25_5.jpg
+        - commune-hero-images/commune_participants_boxshop25_6.jpg
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_8.jpg,videos/unscruz_video_weboptimized.mp4,videos/sphere_weboptimized.mp4,videos/table_interactive_weboptimized.mp4,commune-hero-images/commune_10.jpg" >}}
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_participants_bman25_4.jpg,videos/commune_showcase_unscruz25_2_weboptimized.mp4,videos/commune_bts_prebuild_boxshop25_1_weboptimized.mp4,videos/commune_bts_prebuild_boxshop25_2_weboptimized.mp4,commune-hero-images/commune_participants_boxshop25_6.jpg" >}}
 
 Deep in the moonlit expanse of the playa, a mesmerizing constellation of lights beckons you forward. As you approach, an otherworldly scene materializes: an elegant dining table, seemingly transported from a retro-futuristic dream, floats in the dusty night air. Eight chairs await, each a silent invitation to join a gathering of strangers who will soon become confidants.
 
@@ -39,7 +39,7 @@ Drawing inspiration from the bold, optimistic vision of "Googie" architecture, C
 
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" data="commune-hero-images" images="commune-hero-images/commune_9.jpg,commune-hero-images/commune_1.jpg,commune-hero-images/commune_2.jpg,commune-hero-images/commune_3.jpg,commune-hero-images/commune_4.jpg,commune-hero-images/commune_5.jpg,commune-hero-images/commune_6.jpg,commune-hero-images/commune_7.png" >}}
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" data="commune-hero-images" images="commune-hero-images/commune_participants_bman25_5.jpg,commune-hero-images/commune_showcase_bman24_1.jpg,commune-hero-images/commune_bts_crew_2.jpg,commune-hero-images/commune_participants_bman24_1.jpg,commune-hero-images/commune_participants_bman24_2.jpg,commune-hero-images/commune_participants_bman24_3.jpg,commune-hero-images/commune_bts_crew_1.jpg,commune-hero-images/commune_bts_original_render_1.png" >}}
 
 ---
 

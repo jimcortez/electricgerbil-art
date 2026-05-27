@@ -25,9 +25,15 @@
   scroll-snap-align: start;
 }
 .carousel ul li > * {position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-.carousel ul li > img {
+.carousel ul li > img,
+.carousel ul li > picture > img {
   object-fit: contain;
   background: linear-gradient(180deg, rgba(7, 10, 17, 0.7), rgba(7, 10, 17, 0.2));
+  width: 100%;
+  height: 100%;
+}
+.carousel ul li > picture {
+  display: block;
 }
 .carousel ul li > video {
   object-fit: contain;
@@ -36,30 +42,44 @@
 .carousel ul li > div {display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 20px;}
 .carousel ol {
   position: absolute;
-  bottom: 12px;
+  bottom: 6px;
   display: flex;
   justify-content: center;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9;
   margin: 0;
+  padding: 0;
 }
-.carousel ol li {list-style: none; padding: 0 5px;}
+.carousel ol li {list-style: none; padding: 0;}
+/* 44x44 hit-target for touch (Apple HIG / WCAG 2.5.5) — visible dot stays small. */
 .carousel ol li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.carousel ol li a::before {
+  content: "";
   display: block;
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   border: 2px solid rgba(255, 255, 255, 0.92);
   background: rgba(8, 11, 17, 0.4);
   border-radius: 100%;
   box-shadow: 0 0 0 1px rgba(57, 212, 255, 0.2);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
-.carousel ol li a:hover,
-.carousel ol li a:focus-visible {
+.carousel ol li a:hover::before,
+.carousel ol li a:focus-visible::before {
   border-color: #39d4ff;
   box-shadow: 0 0 0 2px rgba(159, 108, 255, 0.35);
 }
-.carousel ol li.selected a {background: #39d4ff;}
+.carousel ol li.selected a::before {background: #39d4ff; border-color: #39d4ff;}
 .carousel .prev, .carousel .next {
   display: none;
   user-select: none;
@@ -85,4 +105,13 @@
 .carousel .next:focus-visible {
   background: rgba(8, 11, 17, 0.46);
   color: #39d4ff;
+}
+
+/* On touch-only devices the arrows overlap the slide and intercept swipes; rely on
+   the bullets and native scroll-snap swipe instead. */
+@media (hover: none) {
+  .carousel .prev,
+  .carousel .next {
+    display: none !important;
+  }
 }

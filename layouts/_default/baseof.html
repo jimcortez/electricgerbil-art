@@ -13,11 +13,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ "css/electric-gerbil-theme.css" | relURL }}">
     {{ range .Site.Params.custom_css }}
       <link rel="stylesheet" href="{{ . | relURL }}">
     {{ end }}
+    {{ block "head" . }}{{ end }}
 
     {{- if site.Config.Services.GoogleAnalytics.ID }}
       {{ template "_internal/google_analytics.html" . }}
@@ -30,7 +30,7 @@
     </main>
     {{ partial "eg-footer.html" . }}
     {{ range .Site.Params.custom_js }}
-      <script src="{{ . | relURL }}"></script>
+      <script src="{{ . | relURL }}?v=20260527a"></script>
     {{ end }}
   </body>
 </html>

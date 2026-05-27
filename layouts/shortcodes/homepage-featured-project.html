@@ -57,7 +57,15 @@
         ) }}
       {{ else if $heroImage }}
         <a href="{{ $featured.RelPermalink }}" class="hero-single-image">
-          <img src="{{ ($heroImage.Fill "1800x1000 q75").RelPermalink }}" alt="{{ $featured.Title }}">
+          {{ $heroSquare := $heroImage.Fill "1920x1080" }}
+          {{ partial "images/responsive.html" (dict
+            "src" $heroSquare
+            "alt" $featured.Title
+            "sizes" "(min-width: 900px) 60vw, 100vw"
+            "widths" (slice 480 800 1280 1920)
+            "loading" "eager"
+            "fetchpriority" "high"
+          ) }}
         </a>
       {{ else }}
         <div class="hero-media-fallback">{{ $featured.Title }}</div>

@@ -1,12 +1,12 @@
 {{ with .Site.Params.social.Github }}
   <a class="button social-icon-link" href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="View Electric Gerbil on GitHub">
-    <i class="fa fa-github" aria-hidden="true"></i>
+    {{ partial "icons/github.html" . }}
     <span>Follow on GitHub</span>
   </a>
 {{ end }}
 {{ with .Site.Params.social.Instagram }}
   <a class="button button-ig social-icon-link" href="https://instagram.com/{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Follow Electric Gerbil on Instagram">
-    <i class="fa fa-instagram" aria-hidden="true"></i>
+    {{ partial "icons/instagram.html" . }}
     <span>Follow @{{ . }} on Instagram</span>
   </a>
 {{ end }}

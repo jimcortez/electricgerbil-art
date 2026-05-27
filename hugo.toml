@@ -58,7 +58,6 @@ theme = ["hugo-video","electric-gerbil"]
   fontsrc = ["'self'",
              "https://electricgerbil.art/",
              "https://*.electricgerbil.art/",
-             "https://maxcdn.bootstrapcdn.com",
              "https://fonts.gstatic.com",
              "data:"]
   formaction = ["'self'"]
@@ -80,11 +79,9 @@ theme = ["hugo-video","electric-gerbil"]
               "https://electricgerbil.art/",
               "https://*.electricgerbil.art/",
               "'unsafe-inline'",
-              "https://maxcdn.bootstrapcdn.com",
               "https://fonts.googleapis.com",
               "https://cdn.jsdelivr.net",
-              "https://tagmanager.google.com",
-              "https://fonts.googleapis.com"]
+              "https://tagmanager.google.com"]
   mediasrc = ["'self'",
               "https://electricgerbil.art/",
               "https://*.electricgerbil.art/",
@@ -96,7 +93,6 @@ theme = ["hugo-video","electric-gerbil"]
            "https://electricgerbil.art/",
            "https://*.electricgerbil.art/",
 		       "https://cdn.jsdelivr.net",
-		       "https://oss.maxcdn.com",
 		       "https://www.google-analytics.com",
 		       "https://ssl.google-analytics.com",
 		       "cse.google.com",

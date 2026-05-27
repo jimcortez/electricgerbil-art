@@ -177,6 +177,27 @@ h1 {
   font-size: clamp(2rem, 6vw, 3.4rem);
 }
 
+h2 {
+  font-size: clamp(1.4rem, 3.8vw, 1.9rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+}
+
+picture {
+  display: block;
+}
+
+/* width/height attrs on <img> set the intrinsic aspect ratio for CLS, but they
+   also leak into the displayed dimensions. height:auto + max-width:100% lets
+   the aspect-ratio derived from those attrs drive layout. */
+picture img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .button {
   display: inline-block;
   margin-top: 1rem;
@@ -214,9 +235,15 @@ h1 {
 
 .project-card img {
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
+}
+
+.project-card picture {
+  display: block;
+  aspect-ratio: 1 / 1;
 }
 
 .card-fallback {
@@ -257,13 +284,20 @@ h1 {
   margin: 0;
 }
 
-.artist-photo {
+.artist-photo,
+.artist-photo-wrap picture img {
   width: 100%;
+  height: auto;
   max-width: 440px;
   border-radius: 18px;
   border: 1px solid rgba(159, 108, 255, 0.35);
   box-shadow: 0 14px 40px rgba(4, 9, 20, 0.45);
   display: block;
+}
+
+.artist-photo-wrap picture {
+  display: block;
+  max-width: 440px;
 }
 
 .artist-copy p {
@@ -333,14 +367,14 @@ h1 {
   gap: 1rem;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 720px) {
   .hero {
     grid-template-columns: 1.45fr 1fr;
     align-items: center;
   }
 
   .artist-card {
-    grid-template-columns: minmax(260px, 420px) minmax(300px, 1fr);
+    grid-template-columns: minmax(220px, 380px) minmax(280px, 1fr);
   }
 }
 
@@ -351,5 +385,28 @@ h1 {
 
   .brand-title {
     font-size: 0.92rem;
+  }
+
+  .nav-wrap {
+    min-height: 56px;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .section {
+    padding: 2.2rem 0;
+  }
+
+  .hero {
+    padding: 1.6rem 0 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-title {
+    font-size: 0.82rem;
   }
 }

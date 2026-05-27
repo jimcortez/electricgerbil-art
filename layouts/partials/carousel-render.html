@@ -9,6 +9,8 @@
 {{ $videoLoop := .videoLoop | default "true" }}
 {{ $videoMuted := .videoMuted | default "true" }}
 {{ $slides := .slides | default (slice) }}
+{{ $sizes := .sizes | default "(min-width: 1200px) 1200px, 92vw" }}
+{{ $imageWidths := .imageWidths | default (slice 480 800 1280 1920) }}
 <div id="{{ $id }}" class="{{ $class }}" {{ with $duration }}duration="{{ . }}"{{ end }} auto-duration-video="{{ $autoDurationVideo }}">
   <ul>
     {{- range $index, $slide := $slides }}
@@ -16,11 +18,22 @@
       {{ $kind := index $slide "kind" }}
       <li id="{{ $id }}_slide{{ add $index 1 }}" style="min-width: calc(100%/{{ $items }}); padding-bottom: {{ $height }}{{ $unit }};">
         {{- if eq $kind "video" }}
-          <video preload="auto" playsinline {{ if eq $videoAutoplay "true" }}autoplay {{ end }}{{ if eq $videoLoop "true" }}loop {{ end }}{{ if eq $videoMuted "true" }}muted {{ end }} >
+          {{/* autoplay/preload are managed by carousel.js: first slide gets metadata,
+               others get none until they become selected. Avoid the HTML autoplay
+               attribute on non-first slides — it forces the browser to fetch the
+               whole video regardless of preload="none". */}}
+          <video preload="{{ if eq $index 0 }}auto{{ else }}none{{ end }}" playsinline {{ if and (eq $videoAutoplay "true") (eq $index 0) }}autoplay {{ end }}{{ if eq $videoLoop "true" }}loop {{ end }}{{ if eq $videoMuted "true" }}muted {{ end }}{{ if eq $videoAutoplay "true" }}data-autoplay="true" {{ end }}>
             <source src="{{ $resource.RelPermalink }}" type="{{ $resource.MediaType.Type }}">
           </video>
         {{- else }}
-          <img src="{{ $resource.RelPermalink }}" alt="{{ $resource.Name }}" />
+          {{ partial "images/responsive.html" (dict
+            "src" $resource
+            "alt" $resource.Name
+            "sizes" $sizes
+            "widths" $imageWidths
+            "loading" (cond (eq $index 0) "eager" "lazy")
+            "fetchpriority" (cond (eq $index 0) "high" "")
+          ) }}
         {{- end }}
         <div><div></div></div>
       </li>

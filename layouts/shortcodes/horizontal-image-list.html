@@ -19,8 +19,15 @@
         {{ else }}
           {{ $processed = $img.Fit $fitSpec }}
         {{ end }}
-        <a href="{{ $img.RelPermalink }}">
-          <img src="{{ $processed.RelPermalink }}" alt="{{ $img.Name }}" style="height:{{ $height }}px; width:auto; display:block;">
+        <a href="{{ $img.RelPermalink }}" style="height:{{ $height }}px;">
+          {{ partial "images/responsive.html" (dict
+            "src" $processed
+            "alt" $img.Name
+            "sizes" (printf "(min-width: 900px) %dpx, 80vw" (mul (int $height) 2))
+            "widths" (slice 320 480 640 (mul (int $height) 2))
+            "loading" "lazy"
+            "class" (printf "horizontal-image-item h-%s" $height)
+          ) }}
         </a>
       {{ end }}
     {{ end }}

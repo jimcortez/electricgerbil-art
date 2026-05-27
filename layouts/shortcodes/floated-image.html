@@ -1,14 +1,18 @@
 {{ $path := .Get "src" }}
 {{ $width := .Get "width" | default "400" }}
-{{ $quality := .Get "quality" | default "85" }}
 {{ $align := .Get "align" | default "right" }}
 {{ $img := $.Page.Resources.GetMatch $path }}
 {{ if $img }}
-  {{ $processed := $img.Resize (printf "%sx q%s" $width $quality) }}
   {{ $direction := cond (eq (lower $align) "left") "row" "row-reverse" }}
   <div style="display:flex; flex-direction:{{ $direction }}; align-items:center; gap:1.5rem; flex-wrap:wrap;">
     <a href="{{ $img.RelPermalink }}" style="flex:0 0 auto; max-width:100%;">
-      <img src="{{ $processed.RelPermalink }}" alt="{{ $img.Name }}" style="width:{{ $width }}px; max-width:100%; height:auto; display:block;">
+      {{ partial "images/responsive.html" (dict
+        "src" $img
+        "alt" $img.Name
+        "sizes" (printf "(min-width: 720px) %spx, 92vw" $width)
+        "widths" (slice 320 480 640 800)
+        "loading" "lazy"
+      ) }}
     </a>
     <div style="flex:1 1 300px; min-width:0;">
       {{ .Inner | $.Page.RenderString }}

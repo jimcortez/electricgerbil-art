@@ -1,0 +1,73 @@
+{{- /*
+  Emits a <picture> with AVIF / WebP / source-format <source>s, each with a
+  srcset of width descriptors, plus an <img> fallback with width/height set
+  for CLS prevention. Disable AVIF in hugo.toml with `[params.images] avif = false`.
+
+  Args (passed via dict):
+    src           — *resource.Resource (required; image)
+    alt           — alt text (default "")
+    sizes         — sizes attribute (default "100vw")
+    widths        — slice of target widths in CSS px (default 320,640,960,1440)
+    class         — class attribute on <img>
+    loading       — "lazy" (default) or "eager"
+    fetchpriority — "high" / "low" (omitted by default)
+    quality       — base quality 0-100 (default 78); webp = q-6, avif = q-22
+*/ -}}
+{{- $src := .src -}}
+{{- if $src -}}
+{{- if eq $src.MediaType.MainType "image" -}}
+{{- $alt := .alt | default "" -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $requested := .widths | default (slice 320 640 960 1440) -}}
+{{- $class := .class | default "" -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $fp := .fetchpriority | default "" -}}
+{{- $q := .quality | default 78 -}}
+{{- $qWebp := sub $q 6 -}}
+{{- $qAvif := sub $q 22 -}}
+{{- $useAvif := true -}}
+{{- with site.Params.images -}}
+  {{- if eq .avif false -}}{{- $useAvif = false -}}{{- end -}}
+{{- end -}}
+
+{{- $natW := $src.Width -}}
+{{- $natH := $src.Height -}}
+
+{{- /* Keep requested widths smaller than the source. If they're all already
+       smaller than the source, that's our full set. Otherwise pin the last
+       variant to the source width (smaller-than-requested source). */ -}}
+{{- $widths := slice -}}
+{{- range $w := $requested -}}
+  {{- if lt $w $natW -}}{{- $widths = $widths | append $w -}}{{- end -}}
+{{- end -}}
+{{- if eq (len $widths) 0 -}}
+  {{- $widths = $widths | append $natW -}}
+{{- end -}}
+
+{{- $fallbackSet := slice -}}
+{{- $webpSet := slice -}}
+{{- $avifSet := slice -}}
+{{- $defaultSrc := "" -}}
+{{- range $i, $w := $widths -}}
+  {{- $base := $src.Resize (printf "%dx q%d" $w $q) -}}
+  {{- if eq $i 0 -}}{{- $defaultSrc = $base.RelPermalink -}}{{- end -}}
+  {{- $fallbackSet = $fallbackSet | append (printf "%s %dw" $base.RelPermalink $w) -}}
+  {{- $webp := $src.Resize (printf "%dx webp q%d" $w $qWebp) -}}
+  {{- /* Only emit when Hugo actually produced WebP (older builds may fall back). */ -}}
+  {{- if eq $webp.MediaType.SubType "webp" -}}
+    {{- $webpSet = $webpSet | append (printf "%s %dw" $webp.RelPermalink $w) -}}
+  {{- end -}}
+  {{- if $useAvif -}}
+    {{- $avif := $src.Process (printf "resize %dx avif q%d" $w $qAvif) -}}
+    {{- if eq $avif.MediaType.SubType "avif" -}}
+      {{- $avifSet = $avifSet | append (printf "%s %dw" $avif.RelPermalink $w) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<picture>
+{{- if $avifSet }}<source type="image/avif" srcset="{{ delimit $avifSet ", " }}" sizes="{{ $sizes }}">{{ end }}
+<source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}">
+<img src="{{ $defaultSrc }}" srcset="{{ delimit $fallbackSet ", " }}" sizes="{{ $sizes }}" width="{{ $natW }}" height="{{ $natH }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async"{{ with $class }} class="{{ . }}"{{ end }}{{ with $fp }} fetchpriority="{{ . }}"{{ end }}>
+</picture>
+{{- end -}}
+{{- end -}}

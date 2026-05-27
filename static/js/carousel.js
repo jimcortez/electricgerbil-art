@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const firstSlide = slides[0];
       const amountvisible = Math.round(ele.offsetWidth / Math.max(firstSlide.offsetWidth, 1));
+      let carouselInView = false;
 
       nextarrow.style.display = slideCount > 1 ? 'block' : 'none';
       prevarrow.style.display = slideCount > 1 ? 'block' : 'none';
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const scheduleAutoAdvance = function() {
         clearImageAdvanceTimer();
         if (!durationMs || slideCount < 2) return;
+        if (!carouselInView) return;
         const selectedSlide = slides[selectedSlideIndex];
         if (!selectedSlide) return;
         // Video slides advance via the timeupdate listener when useVideoLoopAdvance is on
@@ -85,17 +87,28 @@ document.addEventListener('DOMContentLoaded', function() {
           const video = slide.querySelector('video');
           if (!video) return;
           const isSelected = slideIndex === selectedSlideIndex;
+          const wantsAutoplay = video.dataset.autoplay === 'true';
 
           if (isSelected) {
+            // Promote to full preload only when this slide is selected and the carousel is in view.
+            if (carouselInView && video.preload !== 'auto') {
+              video.preload = 'auto';
+            }
             try {
               video.currentTime = 0;
             } catch (error) {}
-            video.play().catch(function(){});
+            if (wantsAutoplay && carouselInView) {
+              video.play().catch(function(){});
+            }
           } else {
             video.pause();
             try {
               video.currentTime = 0;
             } catch (error) {}
+            // Drop other videos back to no-fetch so they don't burn mobile data.
+            if (video.preload !== 'none') {
+              video.preload = 'none';
+            }
           }
         });
       };
@@ -201,7 +214,10 @@ document.addEventListener('DOMContentLoaded', function() {
         ele.classList.add('interacted');
       };
 
+      const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       const shouldAutoAdvance = function() {
+        if (reducedMotion) return false;
         return ele != document.querySelector(".carousel:hover ul") && ele.classList.contains('interacted')==false;
       };
 
@@ -258,6 +274,25 @@ document.addEventListener('DOMContentLoaded', function() {
             video.addEventListener('timeupdate', onVideoTimeUpdate);
           }
         });
+      }
+
+      // Pause + drop preload when the carousel scrolls offscreen; resume on re-entry.
+      // Saves mobile data and stops background CPU/GPU on long pages.
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            carouselInView = entry.isIntersecting;
+            syncVideoPlaybackState();
+            if (carouselInView) {
+              scheduleAutoAdvance();
+            } else {
+              clearImageAdvanceTimer();
+            }
+          });
+        }, { threshold: 0.15 });
+        io.observe(carousel);
+      } else {
+        carouselInView = true;
         syncVideoPlaybackState();
       }
 

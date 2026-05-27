@@ -1,10 +1,13 @@
 {{ $aboutPath := default "/about" (.Get "path") }}
 {{ $aboutPage := .Site.GetPage $aboutPath }}
 {{ $artistImage := "" }}
+{{ $artistResource := false }}
 {{ $artistSynopsis := "" }}
 {{ if $aboutPage }}
   {{ with $aboutPage.Params.homepage_image }}
     {{ $artistImage = . }}
+    {{ $rel := strings.TrimPrefix "/about/" . }}
+    {{ $artistResource = $aboutPage.Resources.GetMatch $rel }}
   {{ end }}
   {{ with $aboutPage.Params.homepage_description }}
     {{ $artistSynopsis = . }}
@@ -14,9 +17,20 @@
 <section id="artist" class="container section synopsis">
   <div class="artist-card">
     <figure class="artist-photo-wrap">
-      {{ if $artistImage }}
+      {{ if $artistResource }}
         <a href="{{ "/about/" | relURL }}">
-          <img class="artist-photo" src="{{ $artistImage | relURL }}" alt="Jim Cortez, artist behind Electric Gerbil">
+          {{ partial "images/responsive.html" (dict
+            "src" $artistResource
+            "alt" "Jim Cortez, artist behind Electric Gerbil"
+            "sizes" "(min-width: 720px) 420px, 92vw"
+            "widths" (slice 320 480 640 880)
+            "class" "artist-photo"
+            "loading" "lazy"
+          ) }}
+        </a>
+      {{ else if $artistImage }}
+        <a href="{{ "/about/" | relURL }}">
+          <img class="artist-photo" src="{{ $artistImage | relURL }}" alt="Jim Cortez, artist behind Electric Gerbil" loading="lazy" decoding="async">
         </a>
       {{ end }}
     </figure>

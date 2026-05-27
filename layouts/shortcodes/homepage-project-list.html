@@ -15,7 +15,14 @@
       <article class="project-card">
         <a href="{{ .RelPermalink }}">
           {{ if $thumb }}
-            <img src="{{ ($thumb.Fill "800x800 q70").RelPermalink }}" alt="{{ .Title }}">
+            {{ $square := $thumb.Fill "1280x1280" }}
+            {{ partial "images/responsive.html" (dict
+              "src" $square
+              "alt" .Title
+              "sizes" "(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+              "widths" (slice 320 480 640 960)
+              "loading" "lazy"
+            ) }}
           {{ else }}
             <div class="card-fallback">{{ .Title }}</div>
           {{ end }}

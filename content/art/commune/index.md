@@ -11,11 +11,10 @@ params:
         - videos/sphere_weboptimized.mp4
         - commune-hero-images/commune_8.jpg
         - commune-hero-images/commune_9.jpg
-        - commune-hero-images/commune_4.jpg
-        - commune-hero-images/commune_5.jpg
+        - commune-hero-images/commune_10.jpg
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_8.jpg,videos/unscruz_video_weboptimized.mp4,videos/sphere_weboptimized.mp4,videos/table_interactive_weboptimized.mp4" >}}
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_8.jpg,videos/unscruz_video_weboptimized.mp4,videos/sphere_weboptimized.mp4,videos/table_interactive_weboptimized.mp4,commune-hero-images/commune_10.jpg" >}}
 
 Deep in the moonlit expanse of the playa, a mesmerizing constellation of lights beckons you forward. As you approach, an otherworldly scene materializes: an elegant dining table, seemingly transported from a retro-futuristic dream, floats in the dusty night air. Eight chairs await, each a silent invitation to join a gathering of strangers who will soon become confidants.
 

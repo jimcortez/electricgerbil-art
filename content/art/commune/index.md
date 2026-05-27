@@ -8,8 +8,8 @@ params:
     featured_description: "Commune is an interactive retro-futurist dining installation by Electric Gerbil, using responsive LED choreography to turn strangers into collaborators."
     homepage_hero_images:
         - commune-hero-images/commune_showcase_unscruz26_2.jpg
-        - videos/commune_showcase_unscruz26_1.mp4
         - videos/commune_showcase_unscruz26_table_animation_and_sphere_3.mp4
+        - videos/commune_showcase_unscruz26_1.mp4
         - commune-hero-images/commune_showcase_bman24_4.jpg
         - videos/commune_showcase_unscruz25_5.mp4
 ---

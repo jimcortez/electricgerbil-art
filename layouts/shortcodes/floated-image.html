@@ -1,0 +1,17 @@
+{{ $path := .Get "src" }}
+{{ $width := .Get "width" | default "400" }}
+{{ $quality := .Get "quality" | default "85" }}
+{{ $align := .Get "align" | default "right" }}
+{{ $img := $.Page.Resources.GetMatch $path }}
+{{ if $img }}
+  {{ $processed := $img.Resize (printf "%sx q%s" $width $quality) }}
+  {{ $direction := cond (eq (lower $align) "left") "row" "row-reverse" }}
+  <div style="display:flex; flex-direction:{{ $direction }}; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+    <a href="{{ $img.RelPermalink }}" style="flex:0 0 auto; max-width:100%;">
+      <img src="{{ $processed.RelPermalink }}" alt="{{ $img.Name }}" style="width:{{ $width }}px; max-width:100%; height:auto; display:block;">
+    </a>
+    <div style="flex:1 1 300px; min-width:0;">
+      {{ .Inner | $.Page.RenderString }}
+    </div>
+  </div>
+{{ end }}

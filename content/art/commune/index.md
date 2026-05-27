@@ -2,19 +2,19 @@
 title: "Commune"
 date: 2024-09-01T12:51:27-07:00
 params:
-    featured_image: commune-hero-images/commune_showcase_bman24_1.jpg
+    featured_image: commune-hero-images/commune_participants_unscruz26_1.jpg
     featured_title: Commune (2024-2026)
     featured_description_short: Interactive retro-futurist light-up dining table
     featured_description: "Commune is an interactive retro-futurist dining installation by Electric Gerbil, using responsive LED choreography to turn strangers into collaborators."
     homepage_hero_images:
-        - videos/commune_showcase_unscruz25_2.mp4
-        - videos/commune_bts_prebuild_boxshop25_1.mp4
-        - commune-hero-images/commune_participants_bman25_4.jpg
-        - commune-hero-images/commune_participants_bman25_5.jpg
-        - commune-hero-images/commune_participants_boxshop25_6.jpg
+        - commune-hero-images/commune_showcase_unscruz26_2.jpg
+        - videos/commune_showcase_unscruz26_1.mp4
+        - videos/commune_showcase_unscruz26_table_animation_and_sphere_3.mp4
+        - commune-hero-images/commune_showcase_bman24_4.jpg
+        - videos/commune_showcase_unscruz25_5.mp4
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_participants_bman25_4.jpg,videos/commune_showcase_unscruz25_2.mp4,videos/commune_bts_prebuild_boxshop25_1.mp4,videos/commune_bts_prebuild_boxshop25_2.mp4,commune-hero-images/commune_participants_boxshop25_6.jpg" >}}
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="videos/commune_showcase_unscruz26_1.mp4,commune-hero-images/commune_showcase_unscruz26_2.jpg,videos/commune_showcase_unscruz26_table_animation_and_sphere_3.mp4,commune-hero-images/commune_showcase_bman24_4.jpg,videos/commune_showcase_unscruz25_5.mp4" >}}
 
 Deep in the moonlit expanse of the playa, a mesmerizing constellation of lights beckons you forward. As you approach, an otherworldly scene materializes: an elegant dining table, seemingly transported from a retro-futuristic dream, floats in the dusty night air. Eight chairs await, each a silent invitation to join a gathering of strangers who will soon become confidants.
 
@@ -25,7 +25,8 @@ But Commune is more than just a visual spectacle – it's an interactive experie
 Special thanks to our visionary crew: Russ, Matthew (and the talented team at [Radius Concepts](https://radius-concepts.com/)), Mina, and Eugenia
 
 ---
-{{< youtube nWjEKeLxS7c >}}
+
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" data="commune-hero-images" images="commune-hero-images/commune_participants_unscruz26_1.jpg,commune-hero-images/commune_participants_unscruz26_2.jpg,commune-hero-images/commune_participants_bman24_3.jpg,commune-hero-images/commune_participants_bman24_4.jpg,commune-hero-images/commune_participants_bman24_5.jpg,commune-hero-images/commune_participants_bman25_6.jpg,commune-hero-images/commune_participants_bman25_7.jpg,commune-hero-images/commune_participants_boxshop25_8.jpg" >}}
 
 ---
 
@@ -39,16 +40,21 @@ Drawing inspiration from the bold, optimistic vision of "Googie" architecture, C
 
 ---
 
-{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" data="commune-hero-images" images="commune-hero-images/commune_participants_bman25_5.jpg,commune-hero-images/commune_showcase_bman24_1.jpg,commune-hero-images/commune_bts_crew_2.jpg,commune-hero-images/commune_participants_bman24_1.jpg,commune-hero-images/commune_participants_bman24_2.jpg,commune-hero-images/commune_participants_bman24_3.jpg,commune-hero-images/commune_bts_crew_1.jpg,commune-hero-images/commune_bts_original_render_1.png" >}}
-
----
-
 ## Major Installations
  - [Burning Man 2024](https://burningman.org/about/history/brc-history/event-archives/2024-event-archive/2024-art-installations/?support_project=0#a2IVI000000ErE92AK) | August 25 - September 2, 2024
  - [unSCruz 2025](https://unscruz.org/) (Grant Recipient) | May 1 - May 4, 2025
  - [Burning Man 2025](https://burningman.org/event/2025-art-listings/?yyyy=&aq=commune&support_project=0#a2IVI0000012q0L2AQ) | August 24 - September 1, 2025
  - [unSCruz 2026](https://unscruz.org/) (Grant Recipient) | April 30 - May 3, 2026
 
+---
+
+{{<carousel items="1" height="500" fitWidth="888" unit="px" duration="7000" auto-duration-video="true" data="commune-hero-images" images="commune-hero-images/commune_bts_original_render_1.png,commune-hero-images/commune_bts_tabletop_off_1.jpg,commune-hero-images/commune_bts_hang_1.jpg,videos/commune_bts_prebuild_boxshop25_1.mp4,videos/commune_bts_prebuild_boxshop25_2.mp4,commune-hero-images/commune_bts_crew_1.jpg,commune-hero-images/commune_bts_crew_2.jpg" >}}
+
+---
+
+{{< youtube nWjEKeLxS7c >}}
+
+---
 
 ## Materials/Technologies Used
 - LED's driven by a mix of [QuinLED](https://quinled.info) (ESP32) microcontrollers (3 dig-quad, 2 dig-octa) networked to a raspberry pi

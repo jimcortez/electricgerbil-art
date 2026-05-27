@@ -1,9 +1,0 @@
-#!/bin/sh
-USER=jecortez
-HOST=jimcortez.com
-DIR=electricgerbil.art/   # the directory where your web site files should go
-
-hugo -F --cleanDestinationDir \
-  && rsync -avz -e "ssh -i ~/Personal/jecortez-personal.pem" public/ ${USER}@${HOST}:~/${DIR}
-
-exit 0

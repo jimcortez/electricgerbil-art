@@ -46,15 +46,15 @@ in-repo, but check before deploying).
 hugo --gc --minify
 ```
 
-Static output is written to `public/` (gitignored). The `deploy` script wraps
-this and rsyncs `public/` to the production host:
+Static output is written to `public/` (gitignored). The `scripts/deploy`
+script wraps this and rsyncs `public/` to the production host:
 
 ```bash
-./deploy        # runs `hugo -F --cleanDestinationDir` then rsync over SSH
+./scripts/deploy   # runs `hugo` then `rsync -avz --delete` over SSH
 ```
 
-Edit the `USER`, `HOST`, `DIR`, and SSH key path inside [deploy](deploy) before
-running it on a different machine.
+Edit the `USER`, `HOST`, `DIR`, and SSH key path inside
+[scripts/deploy](scripts/deploy) before running it on a different machine.
 
 ## Project layout
 
@@ -105,9 +105,9 @@ electricgerbil-art/
 │   ├── js/
 │   └── js-external/           # third-party libs fetched by load_external_resources
 ├── scripts/
+│   ├── deploy                 # `hugo` + rsync over SSH to production
 │   └── ffmpeg-web-loop.sh     # Encodes silent, looping, web-optimized mp4s
 ├── load_external_resources    # Refreshes assets/js-external from CDNs
-└── deploy                     # `hugo` + rsync over SSH to production
 ```
 
 ## The `electric-gerbil` custom theme
@@ -253,7 +253,8 @@ copies. Only the optimized clip lives in the bundle — reference it from
   carousel CSS/JS into `assets/js-external/`. Run when bumping a third-party
   dep.
 - [scripts/ffmpeg-web-loop.sh](scripts/ffmpeg-web-loop.sh) — see above.
-- [deploy](deploy) — production rsync deploy. Edit credentials before use.
+- [scripts/deploy](scripts/deploy) — production rsync deploy. Edit
+  credentials before use.
 
 ## Notes
 

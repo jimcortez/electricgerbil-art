@@ -115,7 +115,7 @@ quickly.
 ```bash
 hugo server --disableFastRender   # dev — http://localhost:1313/
 hugo --gc --minify                # production build to ./public/
-./deploy                          # production rsync; edit USER/HOST/key first
+./scripts/deploy                  # production rsync; edit USER/HOST/key first
 ```
 
 `disableFastRender` is required (carousels mutate page resources). On a fresh
@@ -160,7 +160,7 @@ checkout: `git submodule update --init --recursive`.
     fast-start, 800px-wide looping mp4s for hero clips.
   - [load_external_resources](load_external_resources) — refresh vendored
     third-party CSS/JS in `assets/js-external/`.
-  - [deploy](deploy) — `hugo` + `rsync` over SSH.
+  - [scripts/deploy](scripts/deploy) — `hugo` + `rsync --delete` over SSH.
 
 ## Conventions agents should respect
 

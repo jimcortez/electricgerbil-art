@@ -1,0 +1,7 @@
+#!/bin/sh
+HOST=electricgerbil.art
+DIR=electricgerbil.art/   # the directory where your website files should go
+
+hugo && rsync -avz --delete -e "ssh" public/ ${HOST}:~/${DIR}
+
+exit 0

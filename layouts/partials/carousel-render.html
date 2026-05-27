@@ -9,7 +9,7 @@
 {{ $videoLoop := .videoLoop | default "true" }}
 {{ $videoMuted := .videoMuted | default "true" }}
 {{ $slides := .slides | default (slice) }}
-<div id="{{ $id }}" class="{{ $class }}" {{ if and $duration (ne $autoDurationVideo "true") }}duration="{{ $duration }}"{{ end }} auto-duration-video="{{ $autoDurationVideo }}">
+<div id="{{ $id }}" class="{{ $class }}" {{ with $duration }}duration="{{ . }}"{{ end }} auto-duration-video="{{ $autoDurationVideo }}">
   <ul>
     {{- range $index, $slide := $slides }}
       {{ $resource := index $slide "resource" }}

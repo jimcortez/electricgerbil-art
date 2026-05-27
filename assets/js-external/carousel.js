@@ -40,7 +40,33 @@ document.addEventListener('DOMContentLoaded', function() {
       const hasVideoSlide = carousel.querySelector('ul li video') !== null;
       const useVideoLoopAdvance = autoDurationVideo && hasVideoSlide;
       const videoProgress = new WeakMap();
+      const durationAttr = carousel.getAttribute('duration');
+      const durationMs = durationAttr ? parseInt(durationAttr, 10) : null;
       let selectedSlideIndex = 0;
+      let imageAdvanceTimer = null;
+
+      const clearImageAdvanceTimer = function() {
+        if (imageAdvanceTimer !== null) {
+          clearTimeout(imageAdvanceTimer);
+          imageAdvanceTimer = null;
+        }
+      };
+
+      const scheduleAutoAdvance = function() {
+        clearImageAdvanceTimer();
+        if (!durationMs || slideCount < 2) return;
+        const selectedSlide = slides[selectedSlideIndex];
+        if (!selectedSlide) return;
+        // Video slides advance via the timeupdate listener when useVideoLoopAdvance is on
+        if (useVideoLoopAdvance && selectedSlide.querySelector('video')) return;
+        imageAdvanceTimer = setTimeout(function() {
+          if (shouldAutoAdvance()) {
+            nextarrow.click();
+          } else {
+            scheduleAutoAdvance();
+          }
+        }, durationMs);
+      };
 
       const getScrollLength = function() {
         if (slideCount < 2) {
@@ -118,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (useVideoLoopAdvance) {
             syncVideoPlaybackState();
           }
+          scheduleAutoAdvance();
       };
 
       const scrollTo = function(event) {
@@ -234,14 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         syncVideoPlaybackState();
       }
 
-      const durationAttr = carousel.getAttribute('duration');
-      if (durationAttr && !useVideoLoopAdvance) {
-        setInterval(function(){
-          if (shouldAutoAdvance()) {
-            nextarrow.click();
-          }
-        }, durationAttr);
-      }
+      scheduleAutoAdvance();
 
   });
 

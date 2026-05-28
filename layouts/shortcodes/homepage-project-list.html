@@ -1,5 +1,5 @@
 {{ $limit := int (default 6 (.Get "limit")) }}
-{{ $title := default "Projects" (.Get "title") }}
+{{ $title := default "Art Projects & Installations" (.Get "title") }}
 {{ $artPages := where .Site.RegularPages "Section" "art" }}
 {{ $artPages = where $artPages ".Params.featured_image" "!=" nil }}
 {{ $artPages = where $artPages ".Params.featured_title" "!=" nil }}

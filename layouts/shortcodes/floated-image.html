@@ -5,7 +5,7 @@
 {{ if $img }}
   {{ $direction := cond (eq (lower $align) "left") "row" "row-reverse" }}
   <div style="display:flex; flex-direction:{{ $direction }}; align-items:center; gap:1.5rem; flex-wrap:wrap;">
-    <a href="{{ $img.RelPermalink }}" style="flex:0 0 auto; max-width:100%;">
+    <a href="{{ $img.RelPermalink }}" style="flex:0 0 auto; width:{{ $width }}px; max-width:100%;">
       {{ partial "images/responsive.html" (dict
         "src" $img
         "alt" $img.Name

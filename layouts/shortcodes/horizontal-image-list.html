@@ -5,7 +5,7 @@
 {{ $fitMode := .Get "fit" | default "fit" }}
 {{ $images := split $imagesParam "," }}
 
-<div style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start;">
+<div class="horizontal-image-list" style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start;">
   {{ range $raw := $images }}
     {{ $path := trim $raw " " }}
     {{ if $path }}
@@ -19,14 +19,13 @@
         {{ else }}
           {{ $processed = $img.Fit $fitSpec }}
         {{ end }}
-        <a href="{{ $img.RelPermalink }}" style="height:{{ $height }}px;">
+        <a class="horizontal-image-list__item" href="{{ $img.RelPermalink }}" style="height:{{ $height }}px;">
           {{ partial "images/responsive.html" (dict
             "src" $processed
             "alt" $img.Name
             "sizes" (printf "(min-width: 900px) %dpx, 80vw" (mul (int $height) 2))
             "widths" (slice 320 480 640 (mul (int $height) 2))
             "loading" "lazy"
-            "class" (printf "horizontal-image-item h-%s" $height)
           ) }}
         </a>
       {{ end }}

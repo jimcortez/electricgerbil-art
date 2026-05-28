@@ -198,6 +198,15 @@ picture img {
   height: auto;
 }
 
+/* Horizontal image list: items share a row at a uniform height set inline on
+   the anchor; pictures fill that height, widths fall out of intrinsic ratio. */
+.horizontal-image-list__item picture,
+.horizontal-image-list__item picture img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+
 .button {
   display: inline-block;
   margin-top: 1rem;

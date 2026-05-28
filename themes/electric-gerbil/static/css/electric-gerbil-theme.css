@@ -337,6 +337,10 @@ picture img {
   max-width: 860px;
 }
 
+.project-content h3 {
+  margin-top: 1rem;
+}
+
 .project-content img,
 .project-content iframe,
 .project-content video {

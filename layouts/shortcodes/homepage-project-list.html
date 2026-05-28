@@ -1,28 +1,37 @@
 {{ $limit := int (default 6 (.Get "limit")) }}
-{{ $title := default "Art Projects & Installations" (.Get "title") }}
-{{ $artPages := where .Site.RegularPages "Section" "art" }}
-{{ $artPages = where $artPages ".Params.featured_image" "!=" nil }}
-{{ $artPages = where $artPages ".Params.featured_title" "!=" nil }}
+{{ $section := default "art" (.Get "section") }}
+{{ $defaultTitle := cond (eq $section "art") "Art Projects & Installations" (printf "%s Projects" (humanize $section)) }}
+{{ $title := default $defaultTitle (.Get "title") }}
+{{ $pages := where .Site.RegularPages "Section" $section }}
+{{ $visible := slice }}
+{{ range $pages }}
+  {{ if and .Params.featured_title (or .Params.featured_image .Params.featured_emoji) }}
+    {{ $visible = $visible | append . }}
+  {{ end }}
+{{ end }}
 
 <section class="container section">
   <div class="section-head">
     <h2>{{ $title }}</h2>
-    <a href="{{ "/art/" | relURL }}">See all</a>
+    <a href="{{ (printf "/%s/" $section) | relURL }}">See all</a>
   </div>
-  <div class="project-grid">
-    {{ range first $limit ($artPages.ByDate.Reverse) }}
-      {{ $thumb := .Resources.GetMatch .Params.featured_image }}
+  <div class="project-grid project-grid--{{ $section }}">
+    {{ range first $limit (sort $visible "Date" "desc") }}
+      {{ $thumb := and .Params.featured_image (.Resources.GetMatch .Params.featured_image) }}
+      {{ $fillDim := cond (eq $section "tech") "1920x1080" "1280x1280" }}
       <article class="project-card">
         <a href="{{ .RelPermalink }}">
           {{ if $thumb }}
-            {{ $square := $thumb.Fill "1280x1280" }}
+            {{ $cropped := $thumb.Fill $fillDim }}
             {{ partial "images/responsive.html" (dict
-              "src" $square
+              "src" $cropped
               "alt" .Title
               "sizes" "(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
               "widths" (slice 320 480 640 960)
               "loading" "lazy"
             ) }}
+          {{ else if .Params.featured_emoji }}
+            <div class="card-fallback card-fallback--emoji" aria-hidden="true">{{ .Params.featured_emoji }}</div>
           {{ else }}
             <div class="card-fallback">{{ .Title }}</div>
           {{ end }}

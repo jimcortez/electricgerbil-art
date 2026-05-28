@@ -42,7 +42,7 @@ When he’s not covered in playa dust or soldering microcontrollers at 2 AM, Jim
 ## Selected Works
 ---
 
-- [Commune](/art/commune/) (August 2024 - 2025)
+- [Commune](/art/commune/) (August 2024 - 2026)
 - [Friends for Dinner](/art/friends-for-dinner/) (August 2023)
 
 ---

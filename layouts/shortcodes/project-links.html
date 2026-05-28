@@ -1,0 +1,23 @@
+{{ $github := .Get "github" }}
+{{ $pypi := .Get "pypi" }}
+{{ $docker := .Get "docker" }}
+<div class="project-links">
+  {{ with $github }}
+    <a class="project-link" href="{{ . }}" rel="noopener" target="_blank">
+      {{ partial "icons/github.html" . }}
+      <span>GitHub</span>
+    </a>
+  {{ end }}
+  {{ with $pypi }}
+    <a class="project-link" href="{{ . }}" rel="noopener" target="_blank">
+      {{ partial "icons/pypi.html" . }}
+      <span>PyPI</span>
+    </a>
+  {{ end }}
+  {{ with $docker }}
+    <a class="project-link" href="{{ . }}" rel="noopener" target="_blank">
+      {{ partial "icons/docker.html" . }}
+      <span>Docker Hub</span>
+    </a>
+  {{ end }}
+</div>

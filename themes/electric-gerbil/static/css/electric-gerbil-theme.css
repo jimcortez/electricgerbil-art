@@ -261,6 +261,28 @@ picture img {
   font-weight: 700;
 }
 
+.card-fallback--emoji {
+  font-size: clamp(4rem, 14vw, 7.5rem);
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  padding: 0;
+}
+
+.project-grid--tech {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 360px));
+}
+
+.project-grid--tech .project-card img,
+.project-grid--tech .project-card picture,
+.project-grid--tech .card-fallback {
+  aspect-ratio: 16 / 9;
+}
+
+.project-grid--tech .card-fallback--emoji {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+}
+
 .card-copy {
   padding: 0.9rem;
 }
@@ -345,6 +367,37 @@ picture img {
 .project-content iframe,
 .project-content video {
   max-width: 100%;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.5rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(57, 212, 255, 0.4);
+  background: rgba(12, 18, 30, 0.75);
+  color: var(--text);
+  font-weight: 600;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.project-link:hover {
+  color: var(--magenta);
+  border-color: rgba(255, 79, 216, 0.7);
+  transform: translateY(-1px);
+}
+
+.project-link .icon {
+  width: 18px;
+  height: 18px;
 }
 
 .simple-list {

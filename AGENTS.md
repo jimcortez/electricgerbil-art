@@ -23,8 +23,56 @@ Usage notes:
 <available_skills>
 
 <skill>
+<name>ai-check</name>
+<description>></description>
+<location>project</location>
+</skill>
+
+<skill>
 <name>frontend-design</name>
 <description>Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>hugo-asset-pipeline</name>
+<description>This skill should be used when the user mentions "scss", "sass", "css processing", "javascript bundling", "js.Build", "hugo pipes", "asset pipeline", "fingerprint", "cache busting", "minify assets", "image processing", "responsive images", "webp", "toCSS", "resources.Get", "resources.Concat", "sri", "subresource integrity", or any Hugo asset processing topics. Provides comprehensive guidance on Hugo's built-in asset pipeline for SCSS compilation, JavaScript bundling, image optimization, and cache management.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>hugo-content-structure</name>
+<description>This skill should be used when the user mentions "content organization", "frontmatter", "taxonomy", "archetype", "page bundle", "leaf bundle", "branch bundle", "_index.md", "section pages", "draft content", "related content", "hugo new", "content types", "tags", "categories", or any Hugo content structure questions. Provides comprehensive guidance on organizing Hugo content, writing frontmatter, configuring taxonomies, and using archetypes.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>hugo-deployment-aws</name>
+<description>This skill should be used when the user mentions "deploy", "deployment", "serverless", "cloudfront", "s3 bucket", "github actions", "ci/cd", "pipeline", "production", "staging", "aws deploy", "cache invalidation", "cdn", "release", "publish site", "go live", or any deployment-related commands. Provides comprehensive AWS deployment workflow using Serverless Framework, GitHub Actions CI/CD, and CloudFront CDN.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>hugo-fundamentals</name>
+<description>This skill should be used when the user mentions "hugo basics", "hugo config", "hugo commands", "project structure", "hugo setup", "hugo.toml", "config.toml", "hugo serve", "hugo build", "content directory", "layouts directory", "static directory", "assets directory", "hugo configuration", "module mounts", "hugo environment", ".Site.Author", "author config", "site params", or any general Hugo static site generator questions. Provides foundational Hugo knowledge including project structure, configuration patterns, essential commands, and migration guidance for deprecated features.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>hugo-templating</name>
+<description>This skill should be used when the user mentions "go template", "hugo template", "partial", "shortcode", "template syntax", "layout", "baseof", "block define", "{{ range }}", "{{ if }}", "{{ with }}", "{{ partial }}", "template lookup", "layout hierarchy", or any Hugo templating concepts. Provides comprehensive guidance on Go template syntax, layouts, partials, shortcodes, and template debugging.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>hugo-testing</name>
+<description>This skill should be used when the user mentions "test javascript", "bun test", "unit test", "happy-dom", "test client-side js", "dom mocking", "browser tests", "test theme toggle", "test scroll handlers", or any testing of JavaScript code in Hugo projects. Provides comprehensive guidance for testing client-side JavaScript using Bun's test runner with happy-dom for DOM environment simulation.</description>
+<location>project</location>
+</skill>
+
+<skill>
+<name>humanize</name>
+<description>></description>
 <location>project</location>
 </skill>
 
@@ -92,12 +140,15 @@ checkout: `git submodule update --init --recursive`.
   `homepage.featured_page` chooses the hero project.
 - **Content** — page bundles under `content/`:
   - `content/_index.md` composes the homepage from
-    `homepage-featured-project`, `homepage-project-list`,
-    `homepage-about-artist` shortcodes.
+    `homepage-featured-project`, two `homepage-project-list` calls (art
+    default + `section="tech"`), and `homepage-about-artist`.
   - `content/art/<project>/index.md` + sibling image/video directories.
     Required front-matter params for a project to appear in lists/hero:
     `featured_image` and `featured_title` (see [README.md](README.md) for the
     full schema).
+  - `content/tech/<project>/index.md` mirrors the art structure. Each project
+    needs `featured_title` plus either `featured_image` or `featured_emoji`
+    (used as a placeholder hero on the grid until real imagery lands).
   - `content/about/index.md` powers the About-the-artist page and feeds the
     homepage artist block via `params.homepage_image` /
     `params.homepage_description`.
@@ -116,6 +167,9 @@ checkout: `git submodule update --init --recursive`.
   - [themes/electric-gerbil/layouts/_default/baseof.html](themes/electric-gerbil/layouts/_default/baseof.html)
   - [themes/electric-gerbil/layouts/art/list.html](themes/electric-gerbil/layouts/art/list.html)
     and [single.html](themes/electric-gerbil/layouts/art/single.html)
+  - [themes/electric-gerbil/layouts/tech/list.html](themes/electric-gerbil/layouts/tech/list.html)
+    and [single.html](themes/electric-gerbil/layouts/tech/single.html) — same
+    shape as art, with a `featured_emoji` fallback in the list template
   - Palette tokens (`--cyan` / `--violet` / `--magenta` plus `--bg`, `--text`,
     `--muted`, `--line`) live at the top of
     [electric-gerbil-theme.css](themes/electric-gerbil/static/css/electric-gerbil-theme.css).
@@ -165,9 +219,11 @@ checkout: `git submodule update --init --recursive`.
     - `commune-hero-images/commune_participants_bman25_4.jpg`
     - `commune-hero-images/commune_bts_crew_1.jpg`
     - `videos/commune_bts_prebuild_boxshop25_2.mp4`
-- **Featured-project guard.** Projects that omit `featured_image` or
+- **Featured-project guard.** Art projects that omit `featured_image` or
   `featured_title` are silently filtered out of the homepage list and the
-  hero. If a new project isn't appearing, check both params.
+  hero. Tech projects are filtered out unless they define `featured_title`
+  plus either `featured_image` or `featured_emoji`. If a new project isn't
+  appearing, check those params first.
 - **Theme vs. project layouts.** Prefer editing files under `layouts/` for
   site-specific tweaks; only touch `themes/electric-gerbil/` when changing the
   theme itself (visual system, base templates, art/ templates). Don't modify

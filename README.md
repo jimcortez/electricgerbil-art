@@ -70,14 +70,16 @@ electricgerbil-art/
 │   ├── about/
 │   │   ├── index.md           # About-the-artist page (page bundle)
 │   │   └── images/            # Page resources for the About page
-│   └── art/
-│       ├── commune/           # Each art project is a page bundle:
-│       │   ├── index.md       #   front matter + body
-│       │   ├── commune-hero-images/  # image resources
-│       │   └── videos/               # web-optimized mp4 resources
-│       ├── friends-for-dinner/
-│       ├── playa-name-generator/
-│       └── temple-of-gerbils/
+│   ├── art/
+│   │   ├── commune/           # Each art project is a page bundle:
+│   │   │   ├── index.md       #   front matter + body
+│   │   │   ├── commune-hero-images/  # image resources
+│   │   │   └── videos/               # web-optimized mp4 resources
+│   │   ├── friends-for-dinner/
+│   │   ├── playa-name-generator/
+│   │   └── temple-of-gerbils/
+│   └── tech/                  # Parallel section for technical projects
+│       └── cadquery-web-viewer/  # Page bundle; uses featured_emoji until images land
 ├── layouts/                   # Project-level overrides (win over the theme)
 │   ├── _default/
 │   │   └── baseof.html        # Cache-busted variant of theme's baseof
@@ -130,6 +132,9 @@ themes/electric-gerbil/
 │   ├── art/
 │   │   ├── list.html          # /art/ — project grid
 │   │   └── single.html        # /art/<project>/ — hero + content
+│   ├── tech/
+│   │   ├── list.html          # /tech/ — project grid (mirrors art, with emoji fallback)
+│   │   └── single.html        # /tech/<project>/ — date header + content
 │   └── partials/
 │       ├── eg-header.html     # Sticky nav with brand + Instagram/GitHub CTAs
 │       ├── eg-footer.html
@@ -169,6 +174,10 @@ own. Highlights worth knowing before editing:
   [art/single.html](themes/electric-gerbil/layouts/art/single.html) drive the
   `/art/` index and individual project pages. The list template reads the
   `featured_image` page resource from each project bundle.
+- [tech/list.html](themes/electric-gerbil/layouts/tech/list.html) and
+  [tech/single.html](themes/electric-gerbil/layouts/tech/single.html) mirror
+  the art templates for the `/tech/` section. The list template falls back to
+  `featured_emoji` when a project bundle has no `featured_image` yet.
 - Header/footer partials read site params from `[params.social]` in
   `hugo.toml` and only render the CTAs whose handles are non-empty.
 
@@ -220,6 +229,32 @@ params:
 Pin a different project to the homepage by setting
 `params.homepage.featured_page` in [hugo.toml](hugo.toml) (defaults to
 `/art/commune`).
+
+### New tech project
+
+Tech projects live under `content/tech/<slug>/index.md` as page bundles, the
+same shape as art. The `/tech/` index and the homepage tech grid (rendered by
+the second `homepage-project-list` shortcode in
+[content/_index.md](content/_index.md)) include any project that has
+`featured_title` plus either `featured_image` or `featured_emoji`. Use
+`featured_emoji` as a placeholder hero when a project has no imagery yet:
+
+```yaml
+---
+title: "CadQuery Web Viewer"
+date: 2026-05-28T12:00:00-07:00
+params:
+    featured_title: CadQuery Web Viewer (2025)
+    featured_emoji: "📐"            # used in place of featured_image
+    featured_description_short: Browser-based 3D viewer for CadQuery and build123d models
+    featured_description: "Longer line for the homepage hero (currently art-only)."
+---
+```
+
+Once real images land, drop `featured_emoji` and add `featured_image` /
+`homepage_hero_images` exactly like an art project. The
+[homepage-featured-project](layouts/shortcodes/homepage-featured-project.html)
+hero is currently art-only; revisit when a tech project is ready to headline.
 
 ### Shortcodes available in content
 

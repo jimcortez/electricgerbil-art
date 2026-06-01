@@ -2,6 +2,7 @@
 title: "pyvvisf"
 date: 2025-07-11T10:00:00-07:00
 params:
+    featured_image: shapes_window.png
     featured_title: pyvvisf (2025)
     featured_emoji: "🌈"
     featured_description_short: Pure-Python ISF shader renderer
@@ -9,6 +10,8 @@ params:
 ---
 
 {{< project-links github="https://github.com/jimcortez/pyvvisf" pypi="https://pypi.org/project/pyvvisf/" >}}
+
+{{<carousel items="1" height="500" fitWidth="888" unit="px" images="shapes_window.png" >}}
 
 Python library for parsing and rendering [ISF](https://isf.video/) shaders. Pure Python on top of PyOpenGL and GLFW, no C++ to build, runs the same on Linux, macOS, and Windows.
 

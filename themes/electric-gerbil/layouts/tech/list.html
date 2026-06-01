@@ -24,7 +24,7 @@
             {{ end }}
             <div class="card-copy">
               <h2>{{ .Title }}</h2>
-              <p>{{ with .Params.featured_title }}{{ . }}{{ else }}{{ .Date.Format "January 2006" }}{{ end }}</p>
+              <p>{{ with .Params.featured_description_short }}{{ . }}{{ else }}{{ .Date.Format "January 2006" }}{{ end }}</p>
             </div>
           </a>
         </article>

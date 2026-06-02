@@ -1,6 +1,6 @@
 ---
 title: "Atlas v2 Model Generator"
-date: 2026-06-01T10:00:00-07:00
+date: 2025-01-01T10:00:00-07:00
 params:
     featured_image: sphere.png
     featured_title: Atlas v2 Model Generator (2025)

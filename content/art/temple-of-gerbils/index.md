@@ -1,6 +1,11 @@
 ---
 title: "Temple of Gerbils - Burning Man 2017-2018"
 date: 2017-09-04T12:51:27-07:00
+params:
+    featured_image: gerbil-hero-images/gerbil-1.png
+    featured_title: Temple of Gerbils (2017-2018)
+    featured_description_short: A wall of ~100 animatronic gerbils that mimic each other on cue
+    featured_description: "A Raspberry Pi-driven wall of ~100 animatronic toy gerbils, wired through relays to repeat sound effects and each other to absurd, chaotic effect."
 ---
 
 In 2016, a fellow burner lent us a toy gerbil that mimics whatever you say and jumps up and down. We were challenged to "build a wall" of gerbils. In 2017, we did just that.

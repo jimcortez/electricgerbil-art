@@ -1,6 +1,11 @@
 ---
 title: "Playa Name Generator - Burning Man 2016-2023"
 date: 2016-09-04T12:51:27-07:00
+params:
+    featured_image: png-hero-images/png_1.JPG
+    featured_title: Playa Name Generator (2016-2023)
+    featured_description_short: A Raspberry Pi that gifts randomized playa names on demand
+    featured_description: "A Raspberry Pi-powered button box that dispenses randomized 'playa names' to passing burners — over 2000 names, custom voice, and a mobile remote."
 ---
 
 What's a playa name? It's a name you are gifted at Burning Man, and some people take it very seriously. We do not.
